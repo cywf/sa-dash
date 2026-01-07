@@ -91,7 +91,32 @@
             border: 1px solid var(--border);
         }
 
-        .refresh-btn:hover, .settings-btn:hover {
+        .monitors-btn {
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: var(--bg);
+            border: none;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .monitors-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: monitors-shine 3s ease-in-out infinite;
+        }
+
+        @keyframes monitors-shine {
+            0%, 100% { left: -100%; }
+            50% { left: 100%; }
+        }
+
+        .refresh-btn:hover, .settings-btn:hover, .monitors-btn:hover {
             opacity: 0.8;
         }
 
@@ -3103,6 +3128,7 @@
             <span class="status" id="status">Ready</span>
         </div>
         <div class="header-right">
+            <button class="refresh-btn monitors-btn" onclick="openMonitorForm()">+ Monitor</button>
             <button class="settings-btn" onclick="toggleSettings()">Panels</button>
             <button class="refresh-btn" id="refreshBtn" onclick="refreshAll()">Refresh</button>
         </div>
