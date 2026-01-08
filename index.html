@@ -2747,6 +2747,451 @@
             gap: 0.75rem;
         }
 
+        /* Correlation Engine */
+        .correlation-panel {
+            padding: 0.5rem;
+        }
+
+        .correlation-sections {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        @media (max-width: 1200px) {
+            .correlation-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .correlation-section {
+            background: rgba(0, 20, 40, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .correlation-section-header {
+            padding: 0.5rem 0.75rem;
+            background: rgba(0, 40, 60, 0.5);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .correlation-icon {
+            font-size: 0.9rem;
+        }
+
+        .correlation-section-title {
+            font-size: 0.65rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .correlation-content {
+            padding: 0.5rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .correlation-item {
+            padding: 0.5rem;
+            border-radius: 3px;
+            margin-bottom: 0.4rem;
+            background: rgba(0, 30, 50, 0.5);
+            border-left: 3px solid var(--accent);
+        }
+
+        .correlation-item.high {
+            border-left-color: #ff4444;
+            background: rgba(255, 68, 68, 0.1);
+        }
+
+        .correlation-item.elevated {
+            border-left-color: #ffaa00;
+            background: rgba(255, 170, 0, 0.08);
+        }
+
+        .correlation-item.emerging {
+            border-left-color: #44ff88;
+            background: rgba(68, 255, 136, 0.08);
+        }
+
+        .correlation-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.3rem;
+        }
+
+        .correlation-topic {
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: var(--text);
+        }
+
+        .correlation-score {
+            font-size: 0.55rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 2px;
+            font-weight: bold;
+        }
+
+        .correlation-score.high {
+            background: rgba(255, 68, 68, 0.3);
+            color: #ff8888;
+        }
+
+        .correlation-score.elevated {
+            background: rgba(255, 170, 0, 0.3);
+            color: #ffcc44;
+        }
+
+        .correlation-score.emerging {
+            background: rgba(68, 255, 136, 0.3);
+            color: #88ffaa;
+        }
+
+        .correlation-meta {
+            font-size: 0.55rem;
+            color: var(--text-dim);
+            margin-bottom: 0.3rem;
+        }
+
+        .correlation-sources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            margin-top: 0.3rem;
+        }
+
+        .correlation-source-tag {
+            font-size: 0.45rem;
+            padding: 0.1rem 0.3rem;
+            background: rgba(0, 100, 150, 0.3);
+            color: #66aacc;
+            border-radius: 2px;
+            text-transform: uppercase;
+        }
+
+        .correlation-headlines {
+            margin-top: 0.4rem;
+            padding-top: 0.4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .correlation-headline {
+            font-size: 0.55rem;
+            color: var(--text-dim);
+            padding: 0.2rem 0;
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .correlation-headline::before {
+            content: '→';
+            color: var(--accent);
+        }
+
+        .correlation-headline a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .correlation-headline a:hover {
+            color: var(--accent);
+        }
+
+        .prediction-confidence {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.3rem;
+        }
+
+        .confidence-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .confidence-fill.high {
+            background: linear-gradient(90deg, #ff4444, #ff8888);
+        }
+
+        .confidence-fill.medium {
+            background: linear-gradient(90deg, #ffaa00, #ffcc44);
+        }
+
+        .confidence-fill.low {
+            background: linear-gradient(90deg, #44aaff, #88ccff);
+        }
+
+        .confidence-label {
+            font-size: 0.5rem;
+            color: var(--text-dim);
+            min-width: 35px;
+            text-align: right;
+        }
+
+        .momentum-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            font-size: 0.55rem;
+            padding: 0.1rem 0.3rem;
+            border-radius: 2px;
+        }
+
+        .momentum-indicator.rising {
+            background: rgba(68, 255, 136, 0.2);
+            color: #66ff99;
+        }
+
+        .momentum-indicator.surging {
+            background: rgba(255, 68, 68, 0.2);
+            color: #ff8888;
+            animation: pulse-surge 1s ease-in-out infinite;
+        }
+
+        .momentum-indicator.stable {
+            background: rgba(100, 100, 100, 0.2);
+            color: #999;
+        }
+
+        @keyframes pulse-surge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .time-delta {
+            font-size: 0.5rem;
+            color: var(--text-dim);
+        }
+
+        .no-correlations {
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Narrative Tracker Styles */
+        .narrative-panel {
+            padding: 0.5rem;
+        }
+
+        .narrative-sections {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        @media (max-width: 600px) {
+            .narrative-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .narrative-section {
+            background: rgba(40, 0, 40, 0.3);
+            border: 1px solid rgba(180, 80, 180, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .narrative-section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.6rem;
+            background: rgba(100, 50, 100, 0.2);
+            border-bottom: 1px solid rgba(180, 80, 180, 0.2);
+        }
+
+        .narrative-icon {
+            font-size: 0.8rem;
+        }
+
+        .narrative-section-title {
+            font-size: 0.6rem;
+            font-weight: bold;
+            color: #cc88cc;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .narrative-content {
+            padding: 0.5rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .narrative-item {
+            padding: 0.4rem;
+            margin-bottom: 0.4rem;
+            background: rgba(80, 40, 80, 0.2);
+            border-radius: 3px;
+            border-left: 3px solid transparent;
+        }
+
+        .narrative-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .narrative-item.viral {
+            border-left-color: #ff4488;
+            background: rgba(255, 68, 136, 0.1);
+        }
+
+        .narrative-item.spreading {
+            border-left-color: #ffaa44;
+            background: rgba(255, 170, 68, 0.1);
+        }
+
+        .narrative-item.emerging {
+            border-left-color: #44ff88;
+            background: rgba(68, 255, 136, 0.1);
+        }
+
+        .narrative-item.watch {
+            border-left-color: #8888ff;
+            background: rgba(136, 136, 255, 0.1);
+        }
+
+        .narrative-item.disinfo {
+            border-left-color: #ff4444;
+            background: rgba(255, 68, 68, 0.1);
+        }
+
+        .narrative-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.3rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .narrative-title {
+            font-size: 0.65rem;
+            font-weight: bold;
+            color: #dda0dd;
+        }
+
+        .narrative-badge {
+            font-size: 0.45rem;
+            padding: 0.1rem 0.3rem;
+            border-radius: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .narrative-badge.viral {
+            background: rgba(255, 68, 136, 0.3);
+            color: #ff88aa;
+        }
+
+        .narrative-badge.spreading {
+            background: rgba(255, 170, 68, 0.3);
+            color: #ffcc88;
+        }
+
+        .narrative-badge.emerging {
+            background: rgba(68, 255, 136, 0.3);
+            color: #88ffaa;
+        }
+
+        .narrative-badge.disinfo {
+            background: rgba(255, 68, 68, 0.3);
+            color: #ff8888;
+        }
+
+        .narrative-description {
+            font-size: 0.55rem;
+            color: var(--text-dim);
+            margin-bottom: 0.3rem;
+        }
+
+        .narrative-metrics {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .narrative-metric {
+            font-size: 0.5rem;
+            color: #aa88aa;
+        }
+
+        .narrative-metric-value {
+            font-weight: bold;
+            color: #cc88cc;
+        }
+
+        .narrative-sources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.2rem;
+            margin-top: 0.3rem;
+        }
+
+        .narrative-source-tag {
+            font-size: 0.45rem;
+            padding: 0.1rem 0.3rem;
+            background: rgba(150, 80, 150, 0.3);
+            color: #bb99bb;
+            border-radius: 2px;
+        }
+
+        .narrative-crossover {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.3rem;
+            padding-top: 0.3rem;
+            border-top: 1px dashed rgba(180, 80, 180, 0.2);
+        }
+
+        .crossover-arrow {
+            font-size: 0.6rem;
+            color: #cc88cc;
+        }
+
+        .crossover-source {
+            font-size: 0.5rem;
+            padding: 0.1rem 0.3rem;
+            border-radius: 2px;
+        }
+
+        .crossover-source.fringe {
+            background: rgba(255, 100, 100, 0.2);
+            color: #ff9999;
+        }
+
+        .crossover-source.mainstream {
+            background: rgba(100, 200, 100, 0.2);
+            color: #88cc88;
+        }
+
+        .no-narratives {
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            text-align: center;
+            padding: 1rem;
+        }
+
         /* Money Printer Gauge */
         .printer-gauge {
             padding: 1.5rem 1rem;
@@ -3689,6 +4134,215 @@
             box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
         }
 
+        /* Flight Radar Aircraft Markers */
+        .aircraft-marker {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            z-index: 50;
+            transition: transform 0.3s ease;
+        }
+
+        .aircraft-icon {
+            width: 100%;
+            height: 100%;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffaa00;
+            text-shadow: 0 0 4px rgba(255, 170, 0, 0.5);
+            transition: all 0.2s ease;
+        }
+
+        .aircraft-marker:hover .aircraft-icon {
+            color: #ffcc44;
+            transform: scale(1.3);
+            text-shadow: 0 0 8px rgba(255, 204, 68, 0.8);
+        }
+
+        .aircraft-marker.military .aircraft-icon {
+            color: #ff4444;
+            text-shadow: 0 0 4px rgba(255, 68, 68, 0.5);
+        }
+
+        .aircraft-marker.cargo .aircraft-icon {
+            color: #44aaff;
+            text-shadow: 0 0 4px rgba(68, 170, 255, 0.5);
+        }
+
+        .aircraft-marker.helicopter .aircraft-icon {
+            color: #44ff88;
+            text-shadow: 0 0 4px rgba(68, 255, 136, 0.5);
+        }
+
+        .aircraft-trail {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(to bottom, rgba(255, 170, 0, 0.4), transparent);
+            transform-origin: top center;
+            pointer-events: none;
+        }
+
+        .aircraft-popup {
+            position: absolute;
+            background: rgba(0, 20, 15, 0.95);
+            border: 1px solid #0a8060;
+            border-radius: 4px;
+            padding: 0.75rem;
+            min-width: 200px;
+            max-width: 280px;
+            z-index: 200;
+            display: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 136, 0.1);
+        }
+
+        .aircraft-popup.visible {
+            display: block;
+        }
+
+        .aircraft-popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .aircraft-callsign {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #00ff88;
+            font-family: 'SF Mono', monospace;
+        }
+
+        .aircraft-type-badge {
+            font-size: 0.5rem;
+            padding: 0.15rem 0.4rem;
+            background: rgba(255, 170, 0, 0.2);
+            color: #ffaa00;
+            border-radius: 2px;
+            text-transform: uppercase;
+        }
+
+        .aircraft-details {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+        }
+
+        .aircraft-detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.2rem 0;
+        }
+
+        .aircraft-detail-label {
+            color: #0a8060;
+        }
+
+        .aircraft-detail-value {
+            color: #88ccaa;
+            font-family: 'SF Mono', monospace;
+        }
+
+        .aircraft-origin-dest {
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.6rem;
+        }
+
+        .aircraft-airport {
+            color: #66aacc;
+            font-family: 'SF Mono', monospace;
+        }
+
+        .aircraft-route-arrow {
+            color: #0a8060;
+        }
+
+        .flight-count-badge {
+            font-size: 0.5rem;
+            padding: 0.1rem 0.3rem;
+            background: rgba(255, 170, 0, 0.2);
+            color: #ffaa00;
+            border-radius: 2px;
+            margin-left: 0.3rem;
+        }
+
+        /* Satellite Imagery Layer */
+        .satellite-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .satellite-canvas.visible {
+            opacity: 0.85;
+        }
+
+        .satellite-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.7rem;
+            color: #00ff88;
+            background: rgba(0, 20, 15, 0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: 1px solid #0a8060;
+            z-index: 5;
+            display: none;
+        }
+
+        .satellite-loading.visible {
+            display: block;
+        }
+
+        .satellite-attribution {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            font-size: 0.45rem;
+            color: rgba(255, 255, 255, 0.5);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.1rem 0.3rem;
+            border-radius: 2px;
+            z-index: 10;
+            display: none;
+        }
+
+        .satellite-attribution.visible {
+            display: block;
+        }
+
+        .layer-btn.satellite-btn {
+            background: rgba(80, 60, 20, 0.3);
+            border-color: #806020;
+            color: #aa8844;
+        }
+
+        .layer-btn.satellite-btn.active {
+            background: rgba(120, 100, 40, 0.5);
+            border-color: #bbaa44;
+            color: #ffdd66;
+            box-shadow: 0 0 10px rgba(255, 220, 100, 0.3);
+        }
+
         /* Custom Monitors */
         .monitors-section {
             margin-top: 1rem;
@@ -4480,6 +5134,102 @@
             </div>
         </section>
 
+        <!-- Correlation Engine -->
+        <section class="panel wide" data-panel="correlation">
+            <div class="panel-header">
+                <span class="panel-title">Correlation Engine</span>
+                <span class="panel-count" id="correlationStatus">ANALYZING</span>
+            </div>
+            <div class="panel-content correlation-panel" id="correlationPanel">
+                <div class="correlation-sections">
+                    <div class="correlation-section">
+                        <div class="correlation-section-header">
+                            <span class="correlation-icon">🔮</span>
+                            <span class="correlation-section-title">Emerging Patterns</span>
+                        </div>
+                        <div class="correlation-content" id="emergingPatterns">
+                            <div class="loading-msg">Scanning for patterns...</div>
+                        </div>
+                    </div>
+                    <div class="correlation-section">
+                        <div class="correlation-section-header">
+                            <span class="correlation-icon">📈</span>
+                            <span class="correlation-section-title">Momentum Signals</span>
+                        </div>
+                        <div class="correlation-content" id="momentumSignals">
+                            <div class="loading-msg">Calculating momentum...</div>
+                        </div>
+                    </div>
+                    <div class="correlation-section">
+                        <div class="correlation-section-header">
+                            <span class="correlation-icon">🔗</span>
+                            <span class="correlation-section-title">Cross-Source Correlations</span>
+                        </div>
+                        <div class="correlation-content" id="crossSourceCorrelations">
+                            <div class="loading-msg">Correlating sources...</div>
+                        </div>
+                    </div>
+                    <div class="correlation-section">
+                        <div class="correlation-section-header">
+                            <span class="correlation-icon">⚡</span>
+                            <span class="correlation-section-title">Predictive Signals</span>
+                        </div>
+                        <div class="correlation-content" id="predictiveSignals">
+                            <div class="loading-msg">Generating predictions...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Narrative Tracker -->
+        <section class="panel wide" data-panel="narrative">
+            <div class="panel-header">
+                <span class="panel-title">Narrative Tracker</span>
+                <span class="panel-count" id="narrativeStatus">TRACKING</span>
+            </div>
+            <div class="panel-content narrative-panel" id="narrativePanel">
+                <div class="narrative-sections">
+                    <div class="narrative-section">
+                        <div class="narrative-section-header">
+                            <span class="narrative-icon">🌱</span>
+                            <span class="narrative-section-title">Emerging Fringe</span>
+                        </div>
+                        <div class="narrative-content" id="emergingFringe">
+                            <div class="loading-msg">Scanning alternative sources...</div>
+                        </div>
+                    </div>
+                    <div class="narrative-section">
+                        <div class="narrative-section-header">
+                            <span class="narrative-icon">🔄</span>
+                            <span class="narrative-section-title">Fringe → Mainstream</span>
+                        </div>
+                        <div class="narrative-content" id="fringeToMainstream">
+                            <div class="loading-msg">Tracking crossover narratives...</div>
+                        </div>
+                    </div>
+                    <div class="narrative-section">
+                        <div class="narrative-section-header">
+                            <span class="narrative-icon">👁</span>
+                            <span class="narrative-section-title">Narrative Watch</span>
+                        </div>
+                        <div class="narrative-content" id="narrativeWatch">
+                            <div class="loading-msg">Monitoring active narratives...</div>
+                        </div>
+                    </div>
+                    <div class="narrative-section">
+                        <div class="narrative-section-header">
+                            <span class="narrative-icon">🎭</span>
+                            <span class="narrative-section-title">Disinfo Signals</span>
+                        </div>
+                        <div class="narrative-content" id="disinfoSignals">
+                            <div class="loading-msg">Analyzing signals...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- My Monitors -->
         <section class="panel" data-panel="monitors">
             <div class="panel-header">
@@ -4519,7 +5269,9 @@
             venezuela: { name: 'Venezuela Situation', priority: 2 },
             greenland: { name: 'Greenland Situation', priority: 2 },
             tbpn: { name: 'TBPN Live', priority: 1 },
-            intel: { name: 'Intel Feed', priority: 2 }
+            intel: { name: 'Intel Feed', priority: 2 },
+            correlation: { name: 'Correlation Engine', priority: 1 },
+            narrative: { name: 'Narrative Tracker', priority: 1 }
         };
 
         // Load panel visibility from localStorage
@@ -5278,8 +6030,342 @@
             }
         ];
 
+        // Middle East hotspots
+        const MIDEAST_HOTSPOTS = [
+            {
+                id: 'gaza-conflict',
+                name: 'Gaza Conflict',
+                location: 'Gaza Strip',
+                lat: 31.3547,
+                lon: 34.3088,
+                level: 'high',
+                category: 'Armed Conflict',
+                description: 'Ongoing Israel-Hamas conflict. Humanitarian crisis, ceasefire negotiations, hostage situation, and military operations.',
+                keywords: ['gaza', 'hamas', 'israel', 'hostage', 'ceasefire', 'rafah', 'humanitarian', 'netanyahu'],
+                startDate: 'Oct 2023',
+                status: 'Active Conflict',
+                icon: '💥'
+            },
+            {
+                id: 'iran-tensions',
+                name: 'Iran Nuclear & Regional',
+                location: 'Tehran, Iran',
+                lat: 35.6892,
+                lon: 51.3890,
+                level: 'high',
+                category: 'Geopolitical',
+                description: 'Nuclear program concerns, regional proxy conflicts, sanctions, and diplomatic tensions with Western powers.',
+                keywords: ['iran', 'tehran', 'nuclear', 'irgc', 'sanctions', 'khamenei', 'enrichment', 'proxy'],
+                startDate: 'Ongoing',
+                status: 'Elevated Tensions',
+                icon: '☢'
+            },
+            {
+                id: 'yemen-houthis',
+                name: 'Yemen & Houthi Attacks',
+                location: 'Sanaa, Yemen',
+                lat: 15.3694,
+                lon: 44.1910,
+                level: 'high',
+                category: 'Armed Conflict',
+                description: 'Houthi attacks on Red Sea shipping, ongoing civil war, and humanitarian catastrophe. US/UK military strikes.',
+                keywords: ['yemen', 'houthi', 'red sea', 'shipping', 'sanaa', 'aden', 'saudi', 'bab el-mandeb'],
+                startDate: '2014',
+                status: 'Active Conflict',
+                icon: '⚔'
+            },
+            {
+                id: 'syria-situation',
+                name: 'Syria Post-Assad',
+                location: 'Damascus, Syria',
+                lat: 33.5138,
+                lon: 36.2765,
+                level: 'elevated',
+                category: 'Political Transition',
+                description: 'Post-Assad transition, HTS governance, reconstruction challenges, and regional power dynamics.',
+                keywords: ['syria', 'damascus', 'hts', 'assad', 'aleppo', 'idlib', 'reconstruction', 'turkey'],
+                startDate: 'Dec 2024',
+                status: 'Political Transition',
+                icon: '🏛'
+            },
+            {
+                id: 'lebanon-hezbollah',
+                name: 'Lebanon Crisis',
+                location: 'Beirut, Lebanon',
+                lat: 33.8938,
+                lon: 35.5018,
+                level: 'elevated',
+                category: 'Political/Security',
+                description: 'Hezbollah tensions, economic collapse, political vacuum, and reconstruction after Israeli operations.',
+                keywords: ['lebanon', 'beirut', 'hezbollah', 'nasrallah', 'economic crisis', 'reconstruction'],
+                startDate: 'Ongoing',
+                status: 'Crisis',
+                icon: '⚠'
+            },
+            {
+                id: 'iraq-instability',
+                name: 'Iraq Security',
+                location: 'Baghdad, Iraq',
+                lat: 33.3152,
+                lon: 44.3661,
+                level: 'medium',
+                category: 'Security',
+                description: 'Militia activities, US military presence, Iranian influence, and political instability.',
+                keywords: ['iraq', 'baghdad', 'militia', 'iran influence', 'us troops', 'pmu'],
+                startDate: 'Ongoing',
+                status: 'Unstable',
+                icon: '🔶'
+            },
+            {
+                id: 'saudi-transformation',
+                name: 'Saudi Vision 2030',
+                location: 'Riyadh, Saudi Arabia',
+                lat: 24.7136,
+                lon: 46.6753,
+                level: 'low',
+                category: 'Economic/Diplomatic',
+                description: 'Economic transformation, NEOM projects, normalization talks, and regional leadership ambitions.',
+                keywords: ['saudi', 'mbs', 'vision 2030', 'neom', 'normalization', 'opec', 'aramco'],
+                startDate: '2016',
+                status: 'Developing',
+                icon: '📈'
+            }
+        ];
+
+        // Ukraine-Russia conflict zone hotspots
+        const UKRAINE_HOTSPOTS = [
+            {
+                id: 'kyiv-capital',
+                name: 'Kyiv Defense',
+                location: 'Kyiv, Ukraine',
+                lat: 50.4501,
+                lon: 30.5234,
+                level: 'high',
+                category: 'Capital Defense',
+                description: 'Ukrainian capital under intermittent missile and drone attacks. Air defense operations and infrastructure targeting.',
+                keywords: ['kyiv', 'kiev', 'ukraine capital', 'air raid', 'missile strike'],
+                startDate: 'Feb 2022',
+                status: 'Active Defense',
+                icon: '🛡'
+            },
+            {
+                id: 'donbas-front',
+                name: 'Donbas Front Line',
+                location: 'Donetsk Oblast',
+                lat: 48.0159,
+                lon: 37.8029,
+                level: 'high',
+                category: 'Active Combat',
+                description: 'Primary axis of Russian offensive operations. Intense fighting around Bakhmut, Avdiivka, and surrounding areas.',
+                keywords: ['donbas', 'donetsk', 'bakhmut', 'avdiivka', 'luhansk', 'front line'],
+                startDate: '2014',
+                status: 'Active Combat Zone',
+                icon: '⚔'
+            },
+            {
+                id: 'kherson-front',
+                name: 'Kherson-Zaporizhzhia',
+                location: 'Southern Ukraine',
+                lat: 46.6354,
+                lon: 32.6169,
+                level: 'high',
+                category: 'Southern Front',
+                description: 'Southern front including Kherson region and Zaporizhzhia nuclear plant concerns. Cross-river operations.',
+                keywords: ['kherson', 'zaporizhzhia', 'dnipro river', 'nuclear plant', 'southern front'],
+                startDate: 'Feb 2022',
+                status: 'Active Front',
+                icon: '☢'
+            },
+            {
+                id: 'crimea-logistics',
+                name: 'Crimea Operations',
+                location: 'Crimean Peninsula',
+                lat: 44.9521,
+                lon: 34.1024,
+                level: 'elevated',
+                category: 'Strategic Target',
+                description: 'Ukrainian strikes on Russian military logistics, Kerch Bridge, and naval assets in occupied Crimea.',
+                keywords: ['crimea', 'kerch bridge', 'sevastopol', 'black sea fleet'],
+                startDate: '2022',
+                status: 'Strike Operations',
+                icon: '🎯'
+            },
+            {
+                id: 'kursk-incursion',
+                name: 'Kursk Incursion',
+                location: 'Kursk Oblast, Russia',
+                lat: 51.7373,
+                lon: 36.1874,
+                level: 'high',
+                category: 'Cross-Border Op',
+                description: 'Ukrainian forces operating inside Russian territory in Kursk region. Significant territorial control.',
+                keywords: ['kursk', 'russia incursion', 'cross-border', 'russian territory'],
+                startDate: 'Aug 2024',
+                status: 'Active Operation',
+                icon: '🔥'
+            },
+            {
+                id: 'moscow-drone',
+                name: 'Moscow Drone War',
+                location: 'Moscow, Russia',
+                lat: 55.7558,
+                lon: 37.6173,
+                level: 'medium',
+                category: 'Drone Attacks',
+                description: 'Ukrainian drone attacks reaching Russian capital and surrounding regions. Psychological and strategic impact.',
+                keywords: ['moscow', 'drone attack', 'kremlin', 'russian capital'],
+                startDate: '2023',
+                status: 'Ongoing Strikes',
+                icon: '🚁'
+            },
+            {
+                id: 'belarus-staging',
+                name: 'Belarus Border',
+                location: 'Minsk, Belarus',
+                lat: 53.9045,
+                lon: 27.5615,
+                level: 'elevated',
+                category: 'Staging Area',
+                description: 'Potential staging area for Russian operations. Lukashenko regime support. Training of Russian forces.',
+                keywords: ['belarus', 'minsk', 'lukashenko', 'staging', 'northern threat'],
+                startDate: 'Feb 2022',
+                status: 'Monitoring',
+                icon: '⚠'
+            },
+            {
+                id: 'black-sea',
+                name: 'Black Sea Control',
+                location: 'Black Sea',
+                lat: 43.4,
+                lon: 34.0,
+                level: 'elevated',
+                category: 'Naval Theater',
+                description: 'Naval warfare, grain corridor disputes, and Russian fleet degradation from Ukrainian strikes.',
+                keywords: ['black sea', 'naval', 'grain', 'odesa', 'fleet'],
+                startDate: 'Feb 2022',
+                status: 'Naval Operations',
+                icon: '⚓'
+            }
+        ];
+
+        // China-Taiwan strait hotspots
+        const TAIWAN_HOTSPOTS = [
+            {
+                id: 'taiwan-strait',
+                name: 'Taiwan Strait',
+                location: 'Taiwan Strait',
+                lat: 24.5,
+                lon: 119.5,
+                level: 'high',
+                category: 'Flashpoint',
+                description: 'Primary potential conflict zone. PLA military exercises, naval patrols, and median line crossings.',
+                keywords: ['taiwan strait', 'median line', 'pla navy', 'blockade'],
+                startDate: 'Ongoing',
+                status: 'High Tension',
+                icon: '⚡'
+            },
+            {
+                id: 'taipei-capital',
+                name: 'Taipei',
+                location: 'Taipei, Taiwan',
+                lat: 25.0330,
+                lon: 121.5654,
+                level: 'elevated',
+                category: 'Capital Defense',
+                description: 'Taiwan capital and government center. Air defense systems, political developments, and US relations.',
+                keywords: ['taipei', 'taiwan government', 'tsai', 'lai', 'presidential'],
+                startDate: 'Ongoing',
+                status: 'Monitoring',
+                icon: '🏛'
+            },
+            {
+                id: 'south-china-sea',
+                name: 'South China Sea',
+                location: 'Spratly Islands',
+                lat: 10.0,
+                lon: 114.0,
+                level: 'high',
+                category: 'Territorial Dispute',
+                description: 'Contested waters with military outposts. China, Philippines, Vietnam, Malaysia territorial claims.',
+                keywords: ['south china sea', 'spratly', 'paracel', 'nine dash', 'reef', 'philippines'],
+                startDate: 'Ongoing',
+                status: 'Contested',
+                icon: '🏝'
+            },
+            {
+                id: 'fujian-buildup',
+                name: 'Fujian Military Zone',
+                location: 'Fujian Province, China',
+                lat: 26.0,
+                lon: 119.3,
+                level: 'elevated',
+                category: 'Military Buildup',
+                description: 'PLA Eastern Theater Command. Amphibious assault forces, missile bases, and air assets.',
+                keywords: ['fujian', 'eastern theater', 'pla', 'amphibious', 'xiamen'],
+                startDate: 'Ongoing',
+                status: 'Buildup',
+                icon: '🎯'
+            },
+            {
+                id: 'kinmen-matsu',
+                name: 'Kinmen & Matsu',
+                location: 'Kinmen Islands',
+                lat: 24.4493,
+                lon: 118.3767,
+                level: 'elevated',
+                category: 'Frontline Islands',
+                description: 'Taiwan-controlled islands near China coast. Gray zone tactics, drone incursions, cable cuts.',
+                keywords: ['kinmen', 'matsu', 'quemoy', 'offshore islands', 'cable cut'],
+                startDate: 'Ongoing',
+                status: 'Gray Zone',
+                icon: '⚠'
+            },
+            {
+                id: 'first-island-chain',
+                name: 'First Island Chain',
+                location: 'Okinawa, Japan',
+                lat: 26.5,
+                lon: 128.0,
+                level: 'medium',
+                category: 'Strategic Defense',
+                description: 'US-Japan defense perimeter. Okinawa bases, missile deployments, AUKUS coordination.',
+                keywords: ['okinawa', 'first island chain', 'kadena', 'us japan', 'aukus'],
+                startDate: 'Ongoing',
+                status: 'Allied Posture',
+                icon: '🛡'
+            },
+            {
+                id: 'beijing-command',
+                name: 'Beijing',
+                location: 'Beijing, China',
+                lat: 39.9042,
+                lon: 116.4074,
+                level: 'medium',
+                category: 'Command Center',
+                description: 'CCP leadership and Central Military Commission. Policy decisions, Xi Jinping directives.',
+                keywords: ['beijing', 'xi jinping', 'ccp', 'central military', 'politburo'],
+                startDate: 'Ongoing',
+                status: 'Command',
+                icon: '🔴'
+            },
+            {
+                id: 'philippines-disputes',
+                name: 'Philippines Tensions',
+                location: 'Scarborough Shoal',
+                lat: 15.15,
+                lon: 117.75,
+                level: 'high',
+                category: 'Maritime Dispute',
+                description: 'China-Philippines confrontations. Coast guard clashes, water cannon incidents, BRP Sierra Madre.',
+                keywords: ['scarborough', 'philippines', 'ayungin', 'sierra madre', 'coast guard', 'marcos'],
+                startDate: '2023',
+                status: 'Active Tensions',
+                icon: '🚢'
+            }
+        ];
+
         // Current map view mode
-        let mapViewMode = 'global'; // 'global' or 'us'
+        let mapViewMode = 'global'; // 'global', 'us', 'mideast', 'ukraine', or 'taiwan'
 
         // Fetch with proxy
         async function fetchWithProxy(url) {
@@ -5897,7 +6983,30 @@
             nuclear: true,
             cables: true,
             sanctions: true,
-            density: true
+            density: true,
+            flights: false,  // Off by default - requires API call
+            satellite: false // Satellite imagery layer
+        };
+
+        // Flight data cache
+        let flightDataCache = null;
+        let flightDataTimestamp = 0;
+        const FLIGHT_CACHE_DURATION = 30000; // 30 seconds
+
+        // Satellite tile configuration
+        const SATELLITE_CONFIG = {
+            // NASA GIBS WMTS - VIIRS Corrected Reflectance (True Color)
+            nasa: {
+                url: 'https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/VIIRS_SNPP_CorrectedReflectance_TrueColor/default/{date}/250m/{z}/{y}/{x}.jpg',
+                attribution: 'NASA GIBS',
+                maxZoom: 8
+            },
+            // ESRI World Imagery (fallback)
+            esri: {
+                url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                attribution: 'ESRI',
+                maxZoom: 18
+            }
         };
 
         // Convert lat/lon to map position (simple equirectangular projection)
@@ -5981,18 +7090,44 @@
 
             // Set up the container
             const isUSView = mapViewMode === 'us';
-            const mapTitle = isUSView ? 'US DOMESTIC MONITOR' : 'GLOBAL ACTIVITY MONITOR';
-            const mapLegend = isUSView ? '★ CAPITAL | ● MAJOR | ○ REGIONAL' : '⚓ SHIP | ☢ NUKES | ▪ BASES | ═ CABLES';
+            const isMidEastView = mapViewMode === 'mideast';
+            const isUkraineView = mapViewMode === 'ukraine';
+            const isTaiwanView = mapViewMode === 'taiwan';
+            const isRegionalView = isUSView || isMidEastView || isUkraineView || isTaiwanView;
+
+            let mapTitle, mapLegend;
+            if (isUSView) {
+                mapTitle = 'US DOMESTIC MONITOR';
+                mapLegend = '★ CAPITAL | ● MAJOR | ○ REGIONAL';
+            } else if (isMidEastView) {
+                mapTitle = 'MIDDLE EAST MONITOR';
+                mapLegend = '💥 CONFLICT | ☢ NUCLEAR | ⚠ CRISIS';
+            } else if (isUkraineView) {
+                mapTitle = 'UKRAINE-RUSSIA THEATER';
+                mapLegend = '⚔ FRONT | 🛡 DEFENSE | 🎯 STRIKE';
+            } else if (isTaiwanView) {
+                mapTitle = 'CHINA-TAIWAN THEATER';
+                mapLegend = '⚡ FLASHPOINT | 🏝 DISPUTED | 🛡 DEFENSE';
+            } else {
+                mapTitle = 'GLOBAL ACTIVITY MONITOR';
+                mapLegend = '⚓ SHIP | ☢ NUKES | ▪ BASES | ═ CABLES';
+            }
 
             panel.innerHTML = `
                 <div class="world-map" id="worldMapContainer">
                     <div class="map-zoom-wrapper" id="mapZoomWrapper">
+                        <canvas id="satelliteCanvas" class="satellite-canvas"></canvas>
+                        <div class="satellite-loading" id="satelliteLoading">Loading satellite imagery...</div>
+                        <div class="satellite-attribution" id="satelliteAttribution">Imagery: ESRI World Imagery</div>
                         <svg id="worldMapSVG"></svg>
                         <div class="map-overlays" id="mapOverlays"></div>
                     </div>
                     <div class="map-view-toggle">
-                        <button class="map-view-btn ${!isUSView ? 'active' : ''}" onclick="setMapView('global')">GLOBAL</button>
+                        <button class="map-view-btn ${mapViewMode === 'global' ? 'active' : ''}" onclick="setMapView('global')">GLOBAL</button>
                         <button class="map-view-btn ${isUSView ? 'active' : ''}" onclick="setMapView('us')">US</button>
+                        <button class="map-view-btn ${isMidEastView ? 'active' : ''}" onclick="setMapView('mideast')">MIDEAST</button>
+                        <button class="map-view-btn ${isUkraineView ? 'active' : ''}" onclick="setMapView('ukraine')">UKRAINE</button>
+                        <button class="map-view-btn ${isTaiwanView ? 'active' : ''}" onclick="setMapView('taiwan')">TAIWAN</button>
                     </div>
                     <div class="map-zoom-controls">
                         <button class="map-zoom-btn" onclick="mapZoomIn()" title="Zoom In">+</button>
@@ -6026,6 +7161,24 @@
                 // Albers USA projection centered on continental US
                 projection = d3.geoAlbersUsa()
                     .scale(width * 1.3)
+                    .translate([width / 2, height / 2]);
+            } else if (isMidEastView) {
+                // Mercator projection centered on Middle East region
+                projection = d3.geoMercator()
+                    .center([42, 28]) // Center on Middle East (lon, lat)
+                    .scale(width * 1.5)
+                    .translate([width / 2, height / 2]);
+            } else if (isUkraineView) {
+                // Mercator projection centered on Ukraine-Russia theater
+                projection = d3.geoMercator()
+                    .center([35, 50]) // Center on Ukraine/Russia border region
+                    .scale(width * 2.2)
+                    .translate([width / 2, height / 2]);
+            } else if (isTaiwanView) {
+                // Mercator projection centered on Taiwan Strait / South China Sea
+                projection = d3.geoMercator()
+                    .center([118, 23]) // Center on Taiwan Strait region
+                    .scale(width * 1.8)
                     .translate([width / 2, height / 2]);
             } else {
                 // Global equirectangular projection
@@ -6154,8 +7307,133 @@
                     }
                 }
 
+                // Middle East view - highlight regional countries
+                if (isMidEastView) {
+                    // Middle East country ISO codes
+                    const MIDEAST_COUNTRIES = [
+                        'SAU', 'ARE', 'QAT', 'KWT', 'BHR', 'OMN', // GCC
+                        'IRN', 'IRQ', 'SYR', 'LBN', 'JOR', 'ISR', 'PSE', // Levant & Iran
+                        'YEM', 'EGY', 'TUR', 'CYP', // Other regional
+                        'AFG', 'PAK' // Extended region
+                    ];
+
+                    // Redraw Middle East countries with highlighting
+                    svg.append('g')
+                        .attr('class', 'mideast-layer')
+                        .selectAll('path')
+                        .data(countries.features)
+                        .enter()
+                        .append('path')
+                        .attr('d', path)
+                        .attr('fill', d => {
+                            const isoCode = d.properties.iso_a3 || d.id;
+                            return MIDEAST_COUNTRIES.includes(isoCode) ? '#0f3028' : '#050f0c';
+                        })
+                        .attr('stroke', d => {
+                            const isoCode = d.properties.iso_a3 || d.id;
+                            return MIDEAST_COUNTRIES.includes(isoCode) ? '#2a8070' : '#0a2018';
+                        })
+                        .attr('stroke-width', d => {
+                            const isoCode = d.properties.iso_a3 || d.id;
+                            return MIDEAST_COUNTRIES.includes(isoCode) ? 1.0 : 0.3;
+                        });
+                }
+
+                // Ukraine-Russia view - highlight theater countries
+                if (isUkraineView) {
+                    // Countries in the Ukraine-Russia theater
+                    const UKRAINE_THEATER = [
+                        'UKR', // Ukraine - primary
+                        'RUS', // Russia - primary
+                        'BLR', // Belarus - staging
+                        'POL', 'ROU', 'MDA', 'HUN', 'SVK', // NATO/EU neighbors
+                        'LTU', 'LVA', 'EST', 'FIN' // Baltic/Nordic
+                    ];
+                    const PRIMARY_COUNTRIES = ['UKR', 'RUS', 'BLR'];
+
+                    // Redraw theater countries with highlighting
+                    svg.append('g')
+                        .attr('class', 'ukraine-layer')
+                        .selectAll('path')
+                        .data(countries.features)
+                        .enter()
+                        .append('path')
+                        .attr('d', path)
+                        .attr('fill', d => {
+                            const isoCode = d.properties.iso_a3 || d.id;
+                            if (isoCode === 'UKR') return '#1a4030'; // Ukraine - distinct
+                            if (isoCode === 'RUS') return '#301818'; // Russia - red tint
+                            if (isoCode === 'BLR') return '#282818'; // Belarus - yellow tint
+                            if (UKRAINE_THEATER.includes(isoCode)) return '#0f2820';
+                            return '#050f0c';
+                        })
+                        .attr('stroke', d => {
+                            const isoCode = d.properties.iso_a3 || d.id;
+                            if (isoCode === 'UKR') return '#3a9070'; // Ukraine border
+                            if (isoCode === 'RUS') return '#803030'; // Russia border
+                            if (PRIMARY_COUNTRIES.includes(isoCode)) return '#806040';
+                            if (UKRAINE_THEATER.includes(isoCode)) return '#2a6050';
+                            return '#0a2018';
+                        })
+                        .attr('stroke-width', d => {
+                            const isoCode = d.properties.iso_a3 || d.id;
+                            if (PRIMARY_COUNTRIES.includes(isoCode)) return 1.5;
+                            if (UKRAINE_THEATER.includes(isoCode)) return 1.0;
+                            return 0.3;
+                        });
+                }
+
+                // China-Taiwan view - highlight theater countries
+                if (isTaiwanView) {
+                    // Countries in the China-Taiwan theater
+                    const TAIWAN_THEATER = [
+                        'CHN', // China - primary
+                        'TWN', // Taiwan - primary
+                        'PHL', // Philippines - disputes
+                        'JPN', // Japan - defense ally
+                        'VNM', // Vietnam - SCS claims
+                        'MYS', // Malaysia - SCS claims
+                        'KOR', // South Korea - regional
+                        'IDN', 'BRN' // ASEAN
+                    ];
+                    const PRIMARY_COUNTRIES = ['CHN', 'TWN', 'PHL'];
+
+                    // Redraw theater countries with highlighting
+                    svg.append('g')
+                        .attr('class', 'taiwan-layer')
+                        .selectAll('path')
+                        .data(countries.features)
+                        .enter()
+                        .append('path')
+                        .attr('d', path)
+                        .attr('fill', d => {
+                            const isoCode = d.properties.iso_a3 || d.id;
+                            if (isoCode === 'CHN') return '#301818'; // China - red tint
+                            if (isoCode === 'TWN') return '#1a3040'; // Taiwan - blue tint
+                            if (isoCode === 'PHL') return '#1a4030'; // Philippines - green
+                            if (isoCode === 'JPN') return '#202840'; // Japan - ally blue
+                            if (TAIWAN_THEATER.includes(isoCode)) return '#0f2820';
+                            return '#050f0c';
+                        })
+                        .attr('stroke', d => {
+                            const isoCode = d.properties.iso_a3 || d.id;
+                            if (isoCode === 'CHN') return '#803030'; // China border
+                            if (isoCode === 'TWN') return '#3080a0'; // Taiwan border
+                            if (isoCode === 'PHL') return '#3a9070'; // Philippines border
+                            if (PRIMARY_COUNTRIES.includes(isoCode)) return '#806040';
+                            if (TAIWAN_THEATER.includes(isoCode)) return '#2a6050';
+                            return '#0a2018';
+                        })
+                        .attr('stroke-width', d => {
+                            const isoCode = d.properties.iso_a3 || d.id;
+                            if (PRIMARY_COUNTRIES.includes(isoCode)) return 1.5;
+                            if (TAIWAN_THEATER.includes(isoCode)) return 1.0;
+                            return 0.3;
+                        });
+                }
+
                 // Add undersea cables as SVG paths (global view only)
-                if (mapLayers.cables && !isUSView) {
+                if (mapLayers.cables && !isRegionalView) {
                     const cableGroup = svg.append('g').attr('class', 'cables-layer');
                     UNDERSEA_CABLES.forEach(cable => {
                         const lineGenerator = d3.line()
@@ -6179,7 +7457,7 @@
                 }
 
                 // Add conflict zone boundaries (global view only)
-                if (mapLayers.conflicts && !isUSView) {
+                if (mapLayers.conflicts && !isRegionalView) {
                     const conflictGroup = svg.append('g').attr('class', 'conflicts-layer');
                     CONFLICT_ZONES.forEach(zone => {
                         // Create closed polygon path
@@ -6224,7 +7502,7 @@
             let overlaysHTML = '';
 
             // Coordinate labels (global view only)
-            if (!isUSView) {
+            if (!isRegionalView) {
                 [-60, -30, 0, 30, 60].forEach(lat => {
                     const pos = toPercent(-175, lat);
                     if (!pos) return;
@@ -6240,7 +7518,7 @@
             }
 
             // News density heatmap blobs (global view only)
-            if (mapLayers.density && !isUSView) {
+            if (mapLayers.density && !isRegionalView) {
                 const densityScores = calculateNewsDensity(allNews);
                 NEWS_REGIONS.forEach(region => {
                     const score = densityScores[region.id] || 0;
@@ -6265,7 +7543,7 @@
             }
 
             // Conflict zone labels (global view only)
-            if (mapLayers.conflicts && !isUSView) {
+            if (mapLayers.conflicts && !isRegionalView) {
                 CONFLICT_ZONES.forEach(zone => {
                     const pos = toPercent(zone.labelPos.lon, zone.labelPos.lat);
                     if (!pos) return;
@@ -6285,7 +7563,7 @@
             }
 
             // Military base markers (global view only)
-            if (mapLayers.bases && !isUSView) {
+            if (mapLayers.bases && !isRegionalView) {
                 MILITARY_BASES.forEach(base => {
                     const pos = toPercent(base.lon, base.lat);
                     if (!pos) return;
@@ -6299,7 +7577,7 @@
             }
 
             // Nuclear facility markers (global view only)
-            if (mapLayers.nuclear && !isUSView) {
+            if (mapLayers.nuclear && !isRegionalView) {
                 NUCLEAR_FACILITIES.forEach(facility => {
                     const pos = toPercent(facility.lon, facility.lat);
                     if (!pos) return;
@@ -6314,7 +7592,7 @@
             }
 
             // Cyber threat zones (global view only)
-            if (!isUSView) {
+            if (!isRegionalView) {
                 CYBER_REGIONS.forEach(cz => {
                     const pos = toPercent(cz.lon, cz.lat);
                     if (!pos) return;
@@ -6341,7 +7619,7 @@
             }
 
             // Shipping chokepoints (global view only)
-            if (!isUSView) {
+            if (!isRegionalView) {
                 SHIPPING_CHOKEPOINTS.forEach(cp => {
                     const pos = toPercent(cp.lon, cp.lat);
                     if (!pos) return;
@@ -6408,7 +7686,7 @@
             });
 
             // Intel hotspots with breaking news pulse for high activity (global view only)
-            if (!isUSView) {
+            if (!isRegionalView) {
                 INTEL_HOTSPOTS.forEach(spot => {
                     const activity = activityData[spot.id] || { level: 'low', score: 0, headlines: [] };
                     const pos = toPercent(spot.lon, spot.lat);
@@ -6587,8 +7865,324 @@
                 overlaysHTML += `<div class="us-hotspot-popup" id="usHotspotPopup"></div>`;
             }
 
+            // Middle East view hotspots
+            if (isMidEastView) {
+                // Middle East major cities
+                const MIDEAST_CITIES = [
+                    { id: 'riyadh', name: 'Riyadh', lat: 24.7136, lon: 46.6753, type: 'capital', keywords: ['riyadh', 'saudi'] },
+                    { id: 'tehran', name: 'Tehran', lat: 35.6892, lon: 51.3890, type: 'capital', keywords: ['tehran', 'iran'] },
+                    { id: 'cairo', name: 'Cairo', lat: 30.0444, lon: 31.2357, type: 'capital', keywords: ['cairo', 'egypt'] },
+                    { id: 'ankara', name: 'Ankara', lat: 39.9334, lon: 32.8597, type: 'capital', keywords: ['ankara', 'turkey'] },
+                    { id: 'baghdad', name: 'Baghdad', lat: 33.3152, lon: 44.3661, type: 'capital', keywords: ['baghdad', 'iraq'] },
+                    { id: 'damascus', name: 'Damascus', lat: 33.5138, lon: 36.2765, type: 'capital', keywords: ['damascus', 'syria'] },
+                    { id: 'amman', name: 'Amman', lat: 31.9454, lon: 35.9284, type: 'capital', keywords: ['amman', 'jordan'] },
+                    { id: 'beirut', name: 'Beirut', lat: 33.8938, lon: 35.5018, type: 'capital', keywords: ['beirut', 'lebanon'] },
+                    { id: 'jerusalem', name: 'Jerusalem', lat: 31.7683, lon: 35.2137, type: 'capital', keywords: ['jerusalem'] },
+                    { id: 'tel-aviv', name: 'Tel Aviv', lat: 32.0853, lon: 34.7818, type: 'major', keywords: ['tel aviv', 'israel'] },
+                    { id: 'dubai', name: 'Dubai', lat: 25.2048, lon: 55.2708, type: 'major', keywords: ['dubai', 'uae'] },
+                    { id: 'abu-dhabi', name: 'Abu Dhabi', lat: 24.4539, lon: 54.3773, type: 'capital', keywords: ['abu dhabi', 'uae'] },
+                    { id: 'doha', name: 'Doha', lat: 25.2854, lon: 51.5310, type: 'capital', keywords: ['doha', 'qatar'] },
+                    { id: 'kuwait', name: 'Kuwait City', lat: 29.3759, lon: 47.9774, type: 'capital', keywords: ['kuwait'] },
+                    { id: 'sanaa', name: "Sana'a", lat: 15.3694, lon: 44.1910, type: 'capital', keywords: ['sanaa', 'yemen'] },
+                    { id: 'istanbul', name: 'Istanbul', lat: 41.0082, lon: 28.9784, type: 'major', keywords: ['istanbul', 'turkey'] },
+                    { id: 'kabul', name: 'Kabul', lat: 34.5553, lon: 69.2075, type: 'capital', keywords: ['kabul', 'afghanistan'] }
+                ];
+
+                // Render Middle East cities
+                MIDEAST_CITIES.forEach(city => {
+                    const projected = projection([city.lon, city.lat]);
+                    if (!projected) return;
+
+                    const posX = (projected[0] / width) * 100;
+                    const posY = (projected[1] / height) * 100;
+
+                    let matchCount = 0;
+                    if (allNews && allNews.length > 0) {
+                        const matches = allNews.filter(item => {
+                            const title = (item.title || '').toLowerCase();
+                            return city.keywords.some(kw => title.includes(kw.toLowerCase()));
+                        });
+                        matchCount = matches.length;
+                    }
+
+                    const typeClass = city.type === 'capital' ? 'capital' : city.type === 'major' ? 'major' : '';
+                    const activityLevel = matchCount >= 5 ? 'high-activity' : '';
+
+                    overlaysHTML += `
+                        <div class="us-city ${typeClass} ${activityLevel}"
+                             style="left: ${posX}%; top: ${posY}%; color: ${city.type === 'capital' ? '#ffcc00' : '#00ff88'};">
+                            <div class="us-city-dot"></div>
+                            <div class="us-city-label">
+                                ${city.name}
+                                ${matchCount > 0 ? `<span class="us-city-count">(${matchCount})</span>` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // Middle East Breaking News Hotspots
+                MIDEAST_HOTSPOTS.forEach(hotspot => {
+                    const projected = projection([hotspot.lon, hotspot.lat]);
+                    if (!projected) return;
+
+                    const posX = (projected[0] / width) * 100;
+                    const posY = (projected[1] / height) * 100;
+
+                    // Check for matching news
+                    let matchCount = 0;
+                    let matchedHeadlines = [];
+                    if (allNews && allNews.length > 0) {
+                        matchedHeadlines = allNews.filter(item => {
+                            const title = (item.title || '').toLowerCase();
+                            return hotspot.keywords.some(kw => title.includes(kw.toLowerCase()));
+                        });
+                        matchCount = matchedHeadlines.length;
+                    }
+
+                    // Store hotspot data for popup
+                    const hotspotData = encodeURIComponent(JSON.stringify({
+                        ...hotspot,
+                        matchCount,
+                        headlines: matchedHeadlines.slice(0, 8)
+                    }));
+
+                    overlaysHTML += `
+                        <div class="us-hotspot ${hotspot.level}"
+                             style="left: ${posX}%; top: ${posY}%;"
+                             data-us-hotspot-id="${hotspot.id}"
+                             data-us-hotspot-info="${hotspotData}"
+                             onclick="showUSHotspotPopup(event, '${hotspot.id}')">
+                            <div class="us-hotspot-glow"></div>
+                            <div class="us-hotspot-ring"></div>
+                            <div class="us-hotspot-marker">${hotspot.icon}</div>
+                            <div class="us-hotspot-label">
+                                ${hotspot.name}
+                                <div class="us-hotspot-category">${hotspot.category}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // Add Middle East hotspot popup container (reusing US popup styles)
+                overlaysHTML += `<div class="us-hotspot-popup" id="usHotspotPopup"></div>`;
+            }
+
+            // Ukraine-Russia view hotspots
+            if (isUkraineView) {
+                // Ukraine-Russia theater major cities
+                const UKRAINE_CITIES = [
+                    { id: 'kyiv', name: 'Kyiv', lat: 50.4501, lon: 30.5234, type: 'capital', keywords: ['kyiv', 'kiev'] },
+                    { id: 'kharkiv', name: 'Kharkiv', lat: 49.9935, lon: 36.2304, type: 'major', keywords: ['kharkiv', 'kharkov'] },
+                    { id: 'odesa', name: 'Odesa', lat: 46.4825, lon: 30.7233, type: 'major', keywords: ['odesa', 'odessa'] },
+                    { id: 'lviv', name: 'Lviv', lat: 49.8397, lon: 24.0297, type: 'major', keywords: ['lviv', 'lvov'] },
+                    { id: 'dnipro', name: 'Dnipro', lat: 48.4647, lon: 35.0462, type: 'major', keywords: ['dnipro', 'dnieper'] },
+                    { id: 'zaporizhzhia', name: 'Zaporizhzhia', lat: 47.8388, lon: 35.1396, type: 'major', keywords: ['zaporizhzhia', 'nuclear plant'] },
+                    { id: 'donetsk', name: 'Donetsk', lat: 48.0159, lon: 37.8029, type: 'major', keywords: ['donetsk', 'donbas'] },
+                    { id: 'moscow', name: 'Moscow', lat: 55.7558, lon: 37.6173, type: 'capital', keywords: ['moscow', 'kremlin', 'putin'] },
+                    { id: 'minsk', name: 'Minsk', lat: 53.9045, lon: 27.5615, type: 'capital', keywords: ['minsk', 'belarus'] },
+                    { id: 'warsaw', name: 'Warsaw', lat: 52.2297, lon: 21.0122, type: 'capital', keywords: ['warsaw', 'poland'] },
+                    { id: 'bucharest', name: 'Bucharest', lat: 44.4268, lon: 26.1025, type: 'capital', keywords: ['bucharest', 'romania'] },
+                    { id: 'chisinau', name: 'Chisinau', lat: 47.0105, lon: 28.8638, type: 'capital', keywords: ['chisinau', 'moldova'] },
+                    { id: 'sevastopol', name: 'Sevastopol', lat: 44.6167, lon: 33.5254, type: 'major', keywords: ['sevastopol', 'crimea', 'black sea fleet'] }
+                ];
+
+                // Render Ukraine theater cities
+                UKRAINE_CITIES.forEach(city => {
+                    const projected = projection([city.lon, city.lat]);
+                    if (!projected) return;
+
+                    const posX = (projected[0] / width) * 100;
+                    const posY = (projected[1] / height) * 100;
+
+                    let matchCount = 0;
+                    if (allNews && allNews.length > 0) {
+                        const matches = allNews.filter(item => {
+                            const title = (item.title || '').toLowerCase();
+                            return city.keywords.some(kw => title.includes(kw.toLowerCase()));
+                        });
+                        matchCount = matches.length;
+                    }
+
+                    const typeClass = city.type === 'capital' ? 'capital' : city.type === 'major' ? 'major' : '';
+                    const activityLevel = matchCount >= 5 ? 'high-activity' : '';
+
+                    // Color based on country
+                    let cityColor = '#00ff88';
+                    if (['moscow'].includes(city.id)) cityColor = '#ff6666';
+                    else if (['minsk'].includes(city.id)) cityColor = '#ffaa44';
+                    else if (['kyiv', 'kharkiv', 'odesa', 'lviv', 'dnipro', 'zaporizhzhia', 'donetsk', 'sevastopol'].includes(city.id)) cityColor = '#44aaff';
+
+                    overlaysHTML += `
+                        <div class="us-city ${typeClass} ${activityLevel}"
+                             style="left: ${posX}%; top: ${posY}%; color: ${city.type === 'capital' ? '#ffcc00' : cityColor};">
+                            <div class="us-city-dot"></div>
+                            <div class="us-city-label">
+                                ${city.name}
+                                ${matchCount > 0 ? `<span class="us-city-count">(${matchCount})</span>` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // Ukraine-Russia theater hotspots
+                UKRAINE_HOTSPOTS.forEach(hotspot => {
+                    const projected = projection([hotspot.lon, hotspot.lat]);
+                    if (!projected) return;
+
+                    const posX = (projected[0] / width) * 100;
+                    const posY = (projected[1] / height) * 100;
+
+                    // Check for matching news
+                    let matchCount = 0;
+                    let matchedHeadlines = [];
+                    if (allNews && allNews.length > 0) {
+                        matchedHeadlines = allNews.filter(item => {
+                            const title = (item.title || '').toLowerCase();
+                            return hotspot.keywords.some(kw => title.includes(kw.toLowerCase()));
+                        });
+                        matchCount = matchedHeadlines.length;
+                    }
+
+                    // Store hotspot data for popup
+                    const hotspotData = encodeURIComponent(JSON.stringify({
+                        ...hotspot,
+                        matchCount,
+                        headlines: matchedHeadlines.slice(0, 8)
+                    }));
+
+                    overlaysHTML += `
+                        <div class="us-hotspot ${hotspot.level}"
+                             style="left: ${posX}%; top: ${posY}%;"
+                             data-us-hotspot-id="${hotspot.id}"
+                             data-us-hotspot-info="${hotspotData}"
+                             onclick="showUSHotspotPopup(event, '${hotspot.id}')">
+                            <div class="us-hotspot-glow"></div>
+                            <div class="us-hotspot-ring"></div>
+                            <div class="us-hotspot-marker">${hotspot.icon}</div>
+                            <div class="us-hotspot-label">
+                                ${hotspot.name}
+                                <div class="us-hotspot-category">${hotspot.category}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // Add Ukraine hotspot popup container
+                overlaysHTML += `<div class="us-hotspot-popup" id="usHotspotPopup"></div>`;
+            }
+
+            // China-Taiwan view hotspots
+            if (isTaiwanView) {
+                // China-Taiwan theater major cities
+                const TAIWAN_CITIES = [
+                    { id: 'taipei', name: 'Taipei', lat: 25.0330, lon: 121.5654, type: 'capital', keywords: ['taipei', 'taiwan'] },
+                    { id: 'beijing', name: 'Beijing', lat: 39.9042, lon: 116.4074, type: 'capital', keywords: ['beijing', 'china', 'xi jinping'] },
+                    { id: 'shanghai', name: 'Shanghai', lat: 31.2304, lon: 121.4737, type: 'major', keywords: ['shanghai'] },
+                    { id: 'hong-kong', name: 'Hong Kong', lat: 22.3193, lon: 114.1694, type: 'major', keywords: ['hong kong', 'hk'] },
+                    { id: 'manila', name: 'Manila', lat: 14.5995, lon: 120.9842, type: 'capital', keywords: ['manila', 'philippines', 'marcos'] },
+                    { id: 'tokyo', name: 'Tokyo', lat: 35.6762, lon: 139.6503, type: 'capital', keywords: ['tokyo', 'japan'] },
+                    { id: 'okinawa', name: 'Okinawa', lat: 26.5013, lon: 127.9454, type: 'major', keywords: ['okinawa', 'kadena'] },
+                    { id: 'kaohsiung', name: 'Kaohsiung', lat: 22.6273, lon: 120.3014, type: 'major', keywords: ['kaohsiung'] },
+                    { id: 'xiamen', name: 'Xiamen', lat: 24.4798, lon: 118.0894, type: 'major', keywords: ['xiamen', 'fujian'] },
+                    { id: 'hanoi', name: 'Hanoi', lat: 21.0285, lon: 105.8542, type: 'capital', keywords: ['hanoi', 'vietnam'] },
+                    { id: 'seoul', name: 'Seoul', lat: 37.5665, lon: 126.9780, type: 'capital', keywords: ['seoul', 'korea'] },
+                    { id: 'singapore', name: 'Singapore', lat: 1.3521, lon: 103.8198, type: 'capital', keywords: ['singapore'] },
+                    { id: 'guam', name: 'Guam', lat: 13.4443, lon: 144.7937, type: 'major', keywords: ['guam', 'andersen'] }
+                ];
+
+                // Render Taiwan theater cities
+                TAIWAN_CITIES.forEach(city => {
+                    const projected = projection([city.lon, city.lat]);
+                    if (!projected) return;
+
+                    const posX = (projected[0] / width) * 100;
+                    const posY = (projected[1] / height) * 100;
+
+                    // Skip if out of bounds
+                    if (posX < 0 || posX > 100 || posY < 0 || posY > 100) return;
+
+                    let matchCount = 0;
+                    if (allNews && allNews.length > 0) {
+                        const matches = allNews.filter(item => {
+                            const title = (item.title || '').toLowerCase();
+                            return city.keywords.some(kw => title.includes(kw.toLowerCase()));
+                        });
+                        matchCount = matches.length;
+                    }
+
+                    const typeClass = city.type === 'capital' ? 'capital' : city.type === 'major' ? 'major' : '';
+                    const activityLevel = matchCount >= 5 ? 'high-activity' : '';
+
+                    // Color based on country
+                    let cityColor = '#00ff88';
+                    if (['beijing', 'shanghai', 'xiamen'].includes(city.id)) cityColor = '#ff6666';
+                    else if (['taipei', 'kaohsiung'].includes(city.id)) cityColor = '#44aaff';
+                    else if (['tokyo', 'okinawa', 'seoul', 'guam'].includes(city.id)) cityColor = '#6688ff';
+
+                    overlaysHTML += `
+                        <div class="us-city ${typeClass} ${activityLevel}"
+                             style="left: ${posX}%; top: ${posY}%; color: ${city.type === 'capital' ? '#ffcc00' : cityColor};">
+                            <div class="us-city-dot"></div>
+                            <div class="us-city-label">
+                                ${city.name}
+                                ${matchCount > 0 ? `<span class="us-city-count">(${matchCount})</span>` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // China-Taiwan theater hotspots
+                TAIWAN_HOTSPOTS.forEach(hotspot => {
+                    const projected = projection([hotspot.lon, hotspot.lat]);
+                    if (!projected) return;
+
+                    const posX = (projected[0] / width) * 100;
+                    const posY = (projected[1] / height) * 100;
+
+                    // Skip if out of bounds
+                    if (posX < 0 || posX > 100 || posY < 0 || posY > 100) return;
+
+                    // Check for matching news
+                    let matchCount = 0;
+                    let matchedHeadlines = [];
+                    if (allNews && allNews.length > 0) {
+                        matchedHeadlines = allNews.filter(item => {
+                            const title = (item.title || '').toLowerCase();
+                            return hotspot.keywords.some(kw => title.includes(kw.toLowerCase()));
+                        });
+                        matchCount = matchedHeadlines.length;
+                    }
+
+                    // Store hotspot data for popup
+                    const hotspotData = encodeURIComponent(JSON.stringify({
+                        ...hotspot,
+                        matchCount,
+                        headlines: matchedHeadlines.slice(0, 8)
+                    }));
+
+                    overlaysHTML += `
+                        <div class="us-hotspot ${hotspot.level}"
+                             style="left: ${posX}%; top: ${posY}%;"
+                             data-us-hotspot-id="${hotspot.id}"
+                             data-us-hotspot-info="${hotspotData}"
+                             onclick="showUSHotspotPopup(event, '${hotspot.id}')">
+                            <div class="us-hotspot-glow"></div>
+                            <div class="us-hotspot-ring"></div>
+                            <div class="us-hotspot-marker">${hotspot.icon}</div>
+                            <div class="us-hotspot-label">
+                                ${hotspot.name}
+                                <div class="us-hotspot-category">${hotspot.category}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // Add Taiwan hotspot popup container
+                overlaysHTML += `<div class="us-hotspot-popup" id="usHotspotPopup"></div>`;
+            }
+
             // Layer toggle buttons (only for global view)
-            if (!isUSView) {
+            if (!isRegionalView) {
                 overlaysHTML += `
                     <div class="map-layer-toggle">
                         <button class="layer-btn ${mapLayers.conflicts ? 'active' : ''}" onclick="toggleLayer('conflicts')">Conflicts</button>
@@ -6597,9 +8191,51 @@
                         <button class="layer-btn ${mapLayers.cables ? 'active' : ''}" onclick="toggleLayer('cables')">Cables</button>
                         <button class="layer-btn ${mapLayers.sanctions ? 'active' : ''}" onclick="toggleLayer('sanctions')">Sanctions</button>
                         <button class="layer-btn ${mapLayers.density ? 'active' : ''}" onclick="toggleLayer('density')">Density</button>
+                        <button class="layer-btn ${mapLayers.flights ? 'active' : ''}" onclick="toggleLayer('flights')">Flights</button>
+                        <button class="layer-btn satellite-btn ${mapLayers.satellite ? 'active' : ''}" onclick="toggleSatelliteLayer()">Satellite</button>
                     </div>
                 `;
             }
+
+            // Flight radar overlay (fetch and render if enabled)
+            if (mapLayers.flights) {
+                try {
+                    const flights = await fetchFlightData();
+                    const flightCount = flights.length;
+
+                    flights.slice(0, 200).forEach(flight => { // Limit for performance
+                        const projected = projection([flight.lon, flight.lat]);
+                        if (!projected) return;
+
+                        const posX = (projected[0] / width) * 100;
+                        const posY = (projected[1] / height) * 100;
+
+                        // Skip if out of bounds
+                        if (posX < 0 || posX > 100 || posY < 0 || posY > 100) return;
+
+                        const aircraftType = classifyAircraft(flight.callsign, flight.country);
+                        const arrow = getAircraftArrow(flight.heading);
+                        const flightData = encodeURIComponent(JSON.stringify(flight));
+
+                        overlaysHTML += `
+                            <div class="aircraft-marker ${aircraftType}"
+                                 style="left: ${posX}%; top: ${posY}%; transform: translate(-50%, -50%) rotate(${flight.heading || 0}deg);"
+                                 onclick="showAircraftPopup(event, '${flightData}')"
+                                 title="${flight.callsign || flight.icao24}">
+                                <div class="aircraft-icon" style="transform: rotate(-${flight.heading || 0}deg);">${arrow}</div>
+                            </div>
+                        `;
+                    });
+
+                    // Add flight count badge to legend
+                    overlaysHTML += `<div class="flight-count-badge" style="position: absolute; bottom: 30px; right: 10px;">✈ ${flightCount} flights</div>`;
+                } catch (e) {
+                    console.error('Flight rendering failed:', e);
+                }
+            }
+
+            // Aircraft popup container
+            overlaysHTML += `<div class="aircraft-popup" id="aircraftPopup"></div>`;
 
             // Flashback slider
             overlaysHTML += `
@@ -6641,6 +8277,9 @@
                 }
                 if (!e.target.closest('.us-hotspot') && !e.target.closest('.us-hotspot-popup')) {
                     hideUSHotspotPopup();
+                }
+                if (!e.target.closest('.aircraft-marker') && !e.target.closest('.aircraft-popup')) {
+                    hideAircraftPopup();
                 }
             });
         }
@@ -7067,6 +8706,19 @@
             }
         }
 
+        // Hide all map popups
+        function hideAllPopups() {
+            hideHotspotPopup();
+            hideChokepointPopup();
+            hideQuakePopup();
+            hideCyberPopup();
+            hideCustomHotspotPopup();
+            hideConflictPopup();
+            hideUSCityPopup();
+            hideUSHotspotPopup();
+            hideAircraftPopup();
+        }
+
         // Escape HTML for popup content
         function escapeHtml(text) {
             if (!text) return '';
@@ -7464,6 +9116,313 @@
             mapLayers[layerName] = !mapLayers[layerName];
             // Re-render the map to apply changes
             refreshAll();
+        }
+
+        // Toggle satellite layer with special handling
+        function toggleSatelliteLayer() {
+            mapLayers.satellite = !mapLayers.satellite;
+
+            const canvas = document.getElementById('satelliteCanvas');
+            const attribution = document.getElementById('satelliteAttribution');
+            const svg = document.getElementById('worldMapSVG');
+
+            if (mapLayers.satellite) {
+                // Show loading indicator
+                const loading = document.getElementById('satelliteLoading');
+                if (loading) loading.classList.add('visible');
+
+                // Render satellite tiles
+                renderSatelliteTiles().then(() => {
+                    if (loading) loading.classList.remove('visible');
+                    if (canvas) canvas.classList.add('visible');
+                    if (attribution) attribution.classList.add('visible');
+                    // Make SVG semi-transparent to show satellite underneath
+                    if (svg) svg.style.opacity = '0.7';
+                });
+            } else {
+                if (canvas) canvas.classList.remove('visible');
+                if (attribution) attribution.classList.remove('visible');
+                if (svg) svg.style.opacity = '1';
+            }
+
+            // Refresh to update button state
+            refreshAll();
+        }
+
+        // Render satellite tiles to canvas
+        async function renderSatelliteTiles() {
+            const canvas = document.getElementById('satelliteCanvas');
+            if (!canvas) return;
+
+            const container = document.getElementById('worldMapContainer');
+            const width = container.offsetWidth || 800;
+            const height = container.offsetHeight || 550;
+
+            canvas.width = width;
+            canvas.height = height;
+
+            const ctx = canvas.getContext('2d');
+
+            // Determine tile parameters based on view
+            const isUSView = mapViewMode === 'us';
+            const isMidEastView = mapViewMode === 'mideast';
+            const isUkraineView = mapViewMode === 'ukraine';
+
+            let bounds, zoom;
+
+            if (isUSView) {
+                bounds = { north: 50, south: 24, east: -66, west: -125 };
+                zoom = 4;
+            } else if (isMidEastView) {
+                bounds = { north: 42, south: 12, east: 63, west: 25 };
+                zoom = 4;
+            } else if (isUkraineView) {
+                bounds = { north: 58, south: 42, east: 45, west: 22 };
+                zoom = 4;
+            } else if (isTaiwanView) {
+                bounds = { north: 42, south: 5, east: 145, west: 100 };
+                zoom = 4;
+            } else {
+                bounds = { north: 85, south: -85, east: 180, west: -180 };
+                zoom = 2;
+            }
+
+            // Calculate tile range
+            const tileCount = Math.pow(2, zoom);
+
+            // Convert bounds to tile coordinates
+            const minTileX = Math.floor((bounds.west + 180) / 360 * tileCount);
+            const maxTileX = Math.floor((bounds.east + 180) / 360 * tileCount);
+            const minTileY = Math.floor((1 - Math.log(Math.tan(bounds.north * Math.PI / 180) + 1 / Math.cos(bounds.north * Math.PI / 180)) / Math.PI) / 2 * tileCount);
+            const maxTileY = Math.floor((1 - Math.log(Math.tan(bounds.south * Math.PI / 180) + 1 / Math.cos(bounds.south * Math.PI / 180)) / Math.PI) / 2 * tileCount);
+
+            // Load and draw tiles
+            const tilePromises = [];
+
+            for (let x = minTileX; x <= maxTileX; x++) {
+                for (let y = minTileY; y <= maxTileY; y++) {
+                    const tileX = ((x % tileCount) + tileCount) % tileCount; // Handle wrapping
+                    const tileY = Math.max(0, Math.min(tileCount - 1, y));
+
+                    const url = SATELLITE_CONFIG.esri.url
+                        .replace('{z}', zoom)
+                        .replace('{x}', tileX)
+                        .replace('{y}', tileY);
+
+                    const promise = loadTileImage(url).then(img => {
+                        if (!img) return;
+
+                        // Calculate tile position on canvas
+                        const tileLonWidth = 360 / tileCount;
+                        const tileLon = x * tileLonWidth - 180;
+
+                        // Mercator Y calculation
+                        const n = Math.PI - 2 * Math.PI * tileY / tileCount;
+                        const tileLat = 180 / Math.PI * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)));
+
+                        const n2 = Math.PI - 2 * Math.PI * (tileY + 1) / tileCount;
+                        const tileLat2 = 180 / Math.PI * Math.atan(0.5 * (Math.exp(n2) - Math.exp(-n2)));
+
+                        // Convert to canvas coordinates
+                        const canvasX = ((tileLon - bounds.west) / (bounds.east - bounds.west)) * width;
+                        const canvasX2 = ((tileLon + tileLonWidth - bounds.west) / (bounds.east - bounds.west)) * width;
+                        const canvasY = ((bounds.north - tileLat) / (bounds.north - bounds.south)) * height;
+                        const canvasY2 = ((bounds.north - tileLat2) / (bounds.north - bounds.south)) * height;
+
+                        const tileWidth = canvasX2 - canvasX;
+                        const tileHeight = canvasY2 - canvasY;
+
+                        ctx.drawImage(img, canvasX, canvasY, tileWidth, tileHeight);
+                    }).catch(e => {
+                        console.warn('Tile load failed:', e);
+                    });
+
+                    tilePromises.push(promise);
+                }
+            }
+
+            await Promise.all(tilePromises);
+        }
+
+        // Load a single tile image
+        function loadTileImage(url) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onload = () => resolve(img);
+                img.onerror = () => resolve(null); // Resolve with null on error to continue
+                img.src = url;
+
+                // Timeout after 10 seconds
+                setTimeout(() => resolve(null), 10000);
+            });
+        }
+
+        // Fetch flight data from OpenSky Network API
+        async function fetchFlightData(bounds = null) {
+            const now = Date.now();
+
+            // Return cached data if still valid
+            if (flightDataCache && (now - flightDataTimestamp) < FLIGHT_CACHE_DURATION) {
+                return flightDataCache;
+            }
+
+            try {
+                // OpenSky Network API - anonymous access (limited)
+                let url = 'https://opensky-network.org/api/states/all';
+
+                // Add bounding box if provided (lamin, lomin, lamax, lomax)
+                if (bounds) {
+                    url += `?lamin=${bounds.south}&lomin=${bounds.west}&lamax=${bounds.north}&lomax=${bounds.east}`;
+                }
+
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                // Parse OpenSky response format
+                // [0] icao24, [1] callsign, [2] origin_country, [3] time_position, [4] last_contact,
+                // [5] longitude, [6] latitude, [7] baro_altitude, [8] on_ground, [9] velocity,
+                // [10] true_track, [11] vertical_rate, [12] sensors, [13] geo_altitude,
+                // [14] squawk, [15] spi, [16] position_source
+                const flights = (data.states || []).slice(0, 500).map(s => ({
+                    icao24: s[0],
+                    callsign: (s[1] || '').trim(),
+                    country: s[2],
+                    lon: s[5],
+                    lat: s[6],
+                    altitude: s[7] || s[13], // baro or geo altitude
+                    onGround: s[8],
+                    velocity: s[9], // m/s
+                    heading: s[10], // degrees from north
+                    verticalRate: s[11],
+                    squawk: s[14]
+                })).filter(f => f.lat && f.lon && !f.onGround); // Only airborne with positions
+
+                flightDataCache = flights;
+                flightDataTimestamp = now;
+
+                return flights;
+            } catch (error) {
+                console.error('Failed to fetch flight data:', error);
+                return flightDataCache || []; // Return stale cache on error
+            }
+        }
+
+        // Classify aircraft type based on callsign patterns
+        function classifyAircraft(callsign, country) {
+            const cs = (callsign || '').toUpperCase();
+
+            // Military patterns
+            if (/^(RCH|JAKE|DUKE|EVAC|AIR|RRR|NAVY|ARMY|USAF|RAF|IAF)/i.test(cs) ||
+                ['United States', 'Russia', 'China'].includes(country) && /^\d{5,}$/.test(cs)) {
+                return 'military';
+            }
+
+            // Cargo/freight patterns
+            if (/^(FDX|UPS|DHL|GTI|ABX|ATN|CLX)/i.test(cs)) {
+                return 'cargo';
+            }
+
+            // Helicopter patterns (often shorter callsigns)
+            if (cs.length <= 4 && /^[A-Z]{1,2}\d{2,3}$/.test(cs)) {
+                return 'helicopter';
+            }
+
+            return 'commercial';
+        }
+
+        // Get aircraft direction arrow based on heading
+        function getAircraftArrow(heading) {
+            if (heading === null || heading === undefined) return '✈';
+            const normalized = ((heading % 360) + 360) % 360;
+            if (normalized >= 337.5 || normalized < 22.5) return '↑';
+            if (normalized >= 22.5 && normalized < 67.5) return '↗';
+            if (normalized >= 67.5 && normalized < 112.5) return '→';
+            if (normalized >= 112.5 && normalized < 157.5) return '↘';
+            if (normalized >= 157.5 && normalized < 202.5) return '↓';
+            if (normalized >= 202.5 && normalized < 247.5) return '↙';
+            if (normalized >= 247.5 && normalized < 292.5) return '←';
+            if (normalized >= 292.5 && normalized < 337.5) return '↖';
+            return '✈';
+        }
+
+        // Show aircraft popup
+        function showAircraftPopup(event, flightData) {
+            event.stopPropagation();
+
+            // Hide other popups
+            hideAllPopups();
+
+            const popup = document.getElementById('aircraftPopup');
+            if (!popup) return;
+
+            const flight = JSON.parse(decodeURIComponent(flightData));
+
+            const altitudeFt = flight.altitude ? Math.round(flight.altitude * 3.28084) : 'N/A';
+            const speedKts = flight.velocity ? Math.round(flight.velocity * 1.94384) : 'N/A';
+            const verticalFpm = flight.verticalRate ? Math.round(flight.verticalRate * 196.85) : 0;
+            const verticalIndicator = verticalFpm > 100 ? '↑' : verticalFpm < -100 ? '↓' : '→';
+
+            popup.innerHTML = `
+                <div class="aircraft-popup-header">
+                    <span class="aircraft-callsign">${flight.callsign || flight.icao24}</span>
+                    <span class="aircraft-type-badge">${classifyAircraft(flight.callsign, flight.country)}</span>
+                </div>
+                <div class="aircraft-details">
+                    <div class="aircraft-detail-row">
+                        <span class="aircraft-detail-label">ICAO24</span>
+                        <span class="aircraft-detail-value">${flight.icao24}</span>
+                    </div>
+                    <div class="aircraft-detail-row">
+                        <span class="aircraft-detail-label">Country</span>
+                        <span class="aircraft-detail-value">${flight.country || 'Unknown'}</span>
+                    </div>
+                    <div class="aircraft-detail-row">
+                        <span class="aircraft-detail-label">Altitude</span>
+                        <span class="aircraft-detail-value">${altitudeFt} ft ${verticalIndicator}</span>
+                    </div>
+                    <div class="aircraft-detail-row">
+                        <span class="aircraft-detail-label">Speed</span>
+                        <span class="aircraft-detail-value">${speedKts} kts</span>
+                    </div>
+                    <div class="aircraft-detail-row">
+                        <span class="aircraft-detail-label">Heading</span>
+                        <span class="aircraft-detail-value">${flight.heading ? Math.round(flight.heading) + '°' : 'N/A'}</span>
+                    </div>
+                    ${flight.squawk ? `
+                    <div class="aircraft-detail-row">
+                        <span class="aircraft-detail-label">Squawk</span>
+                        <span class="aircraft-detail-value">${flight.squawk}</span>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+
+            // Position popup near click
+            const rect = event.target.getBoundingClientRect();
+            const mapContainer = document.getElementById('worldMapContainer');
+            const mapRect = mapContainer.getBoundingClientRect();
+
+            let left = rect.left - mapRect.left + 20;
+            let top = rect.top - mapRect.top;
+
+            // Keep popup in bounds
+            if (left + 250 > mapRect.width) left = rect.left - mapRect.left - 220;
+            if (top + 200 > mapRect.height) top = mapRect.height - 210;
+
+            popup.style.left = `${left}px`;
+            popup.style.top = `${top}px`;
+            popup.classList.add('visible');
+        }
+
+        // Hide aircraft popup
+        function hideAircraftPopup() {
+            const popup = document.getElementById('aircraftPopup');
+            if (popup) popup.classList.remove('visible');
         }
 
         // Update flashback time display
@@ -7882,6 +9841,529 @@
                 return [];
             }
         }
+
+        // ==================== CORRELATION ENGINE ====================
+
+        // Topic extraction patterns for correlation detection
+        const CORRELATION_TOPICS = [
+            { id: 'tariffs', patterns: [/tariff/i, /trade war/i, /import tax/i, /customs duty/i], category: 'Economy' },
+            { id: 'fed-rates', patterns: [/federal reserve/i, /interest rate/i, /rate cut/i, /rate hike/i, /powell/i, /fomc/i], category: 'Economy' },
+            { id: 'inflation', patterns: [/inflation/i, /cpi/i, /consumer price/i, /cost of living/i], category: 'Economy' },
+            { id: 'ai-regulation', patterns: [/ai regulation/i, /artificial intelligence.*law/i, /ai safety/i, /ai governance/i], category: 'Tech' },
+            { id: 'china-tensions', patterns: [/china.*taiwan/i, /south china sea/i, /us.*china/i, /beijing.*washington/i], category: 'Geopolitics' },
+            { id: 'russia-ukraine', patterns: [/ukraine/i, /zelensky/i, /putin.*war/i, /crimea/i, /donbas/i], category: 'Conflict' },
+            { id: 'israel-gaza', patterns: [/gaza/i, /hamas/i, /netanyahu/i, /israel.*attack/i, /hostage/i], category: 'Conflict' },
+            { id: 'iran', patterns: [/iran.*nuclear/i, /tehran/i, /ayatollah/i, /iranian.*strike/i], category: 'Geopolitics' },
+            { id: 'crypto', patterns: [/bitcoin/i, /crypto.*regulation/i, /ethereum/i, /sec.*crypto/i], category: 'Finance' },
+            { id: 'housing', patterns: [/housing market/i, /mortgage rate/i, /home price/i, /real estate.*crash/i], category: 'Economy' },
+            { id: 'layoffs', patterns: [/layoff/i, /job cut/i, /workforce reduction/i, /downsizing/i], category: 'Business' },
+            { id: 'bank-crisis', patterns: [/bank.*fail/i, /banking crisis/i, /fdic/i, /bank run/i], category: 'Finance' },
+            { id: 'election', patterns: [/election/i, /polling/i, /campaign/i, /ballot/i, /voter/i], category: 'Politics' },
+            { id: 'immigration', patterns: [/immigration/i, /border.*crisis/i, /migrant/i, /deportation/i, /asylum/i], category: 'Politics' },
+            { id: 'climate', patterns: [/climate change/i, /wildfire/i, /hurricane/i, /extreme weather/i, /flood/i], category: 'Environment' },
+            { id: 'pandemic', patterns: [/pandemic/i, /outbreak/i, /virus.*spread/i, /who.*emergency/i, /bird flu/i], category: 'Health' },
+            { id: 'nuclear', patterns: [/nuclear.*threat/i, /nuclear weapon/i, /atomic/i, /icbm/i], category: 'Security' },
+            { id: 'supply-chain', patterns: [/supply chain/i, /shipping.*delay/i, /port.*congestion/i, /logistics.*crisis/i], category: 'Economy' },
+            { id: 'big-tech', patterns: [/antitrust.*tech/i, /google.*monopoly/i, /meta.*lawsuit/i, /apple.*doj/i], category: 'Tech' },
+            { id: 'deepfake', patterns: [/deepfake/i, /ai.*misinformation/i, /synthetic media/i], category: 'Tech' }
+        ];
+
+        // Track historical topic counts for momentum analysis
+        let topicHistory = {};
+        let lastCorrelationUpdate = 0;
+
+        // Analyze correlations across all news
+        function analyzeCorrelations(allNews) {
+            if (!allNews || allNews.length === 0) return null;
+
+            const now = Date.now();
+            const results = {
+                emergingPatterns: [],
+                momentumSignals: [],
+                crossSourceCorrelations: [],
+                predictiveSignals: []
+            };
+
+            // Count topics and track sources
+            const topicCounts = {};
+            const topicSources = {};
+            const topicHeadlines = {};
+
+            allNews.forEach(item => {
+                const title = item.title || '';
+                const source = item.source || 'Unknown';
+
+                CORRELATION_TOPICS.forEach(topic => {
+                    const matches = topic.patterns.some(p => p.test(title));
+                    if (matches) {
+                        if (!topicCounts[topic.id]) {
+                            topicCounts[topic.id] = 0;
+                            topicSources[topic.id] = new Set();
+                            topicHeadlines[topic.id] = [];
+                        }
+                        topicCounts[topic.id]++;
+                        topicSources[topic.id].add(source);
+                        if (topicHeadlines[topic.id].length < 5) {
+                            topicHeadlines[topic.id].push({ title, link: item.link, source });
+                        }
+                    }
+                });
+            });
+
+            // Calculate momentum by comparing to history
+            const currentTime = Math.floor(now / 60000); // minute resolution
+            if (!topicHistory[currentTime]) {
+                topicHistory[currentTime] = { ...topicCounts };
+                // Clean old history (keep last 30 minutes)
+                Object.keys(topicHistory).forEach(t => {
+                    if (currentTime - parseInt(t) > 30) delete topicHistory[t];
+                });
+            }
+
+            // Emerging Patterns: Topics with high counts
+            CORRELATION_TOPICS.forEach(topic => {
+                const count = topicCounts[topic.id] || 0;
+                if (count >= 3) {
+                    const sources = topicSources[topic.id] ? Array.from(topicSources[topic.id]) : [];
+                    const level = count >= 8 ? 'high' : count >= 5 ? 'elevated' : 'emerging';
+                    results.emergingPatterns.push({
+                        id: topic.id,
+                        name: topic.id.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                        category: topic.category,
+                        count,
+                        level,
+                        sources,
+                        headlines: topicHeadlines[topic.id] || []
+                    });
+                }
+            });
+
+            // Sort by count
+            results.emergingPatterns.sort((a, b) => b.count - a.count);
+
+            // Momentum Signals: Topics increasing rapidly
+            const oldTime = currentTime - 10; // 10 minutes ago
+            const oldCounts = topicHistory[oldTime] || {};
+
+            CORRELATION_TOPICS.forEach(topic => {
+                const current = topicCounts[topic.id] || 0;
+                const old = oldCounts[topic.id] || 0;
+                const delta = current - old;
+
+                if (delta >= 2 || (current >= 3 && delta >= 1)) {
+                    const momentum = delta >= 4 ? 'surging' : delta >= 2 ? 'rising' : 'stable';
+                    results.momentumSignals.push({
+                        id: topic.id,
+                        name: topic.id.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                        category: topic.category,
+                        current,
+                        delta,
+                        momentum,
+                        headlines: topicHeadlines[topic.id] || []
+                    });
+                }
+            });
+
+            results.momentumSignals.sort((a, b) => b.delta - a.delta);
+
+            // Cross-Source Correlations: Topics appearing in multiple sources
+            CORRELATION_TOPICS.forEach(topic => {
+                const sources = topicSources[topic.id] ? Array.from(topicSources[topic.id]) : [];
+                if (sources.length >= 3) {
+                    results.crossSourceCorrelations.push({
+                        id: topic.id,
+                        name: topic.id.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                        category: topic.category,
+                        sourceCount: sources.length,
+                        sources,
+                        level: sources.length >= 5 ? 'high' : sources.length >= 4 ? 'elevated' : 'emerging',
+                        headlines: topicHeadlines[topic.id] || []
+                    });
+                }
+            });
+
+            results.crossSourceCorrelations.sort((a, b) => b.sourceCount - a.sourceCount);
+
+            // Predictive Signals: Combine factors for predictions
+            CORRELATION_TOPICS.forEach(topic => {
+                const count = topicCounts[topic.id] || 0;
+                const sources = topicSources[topic.id] ? topicSources[topic.id].size : 0;
+                const delta = (topicCounts[topic.id] || 0) - (oldCounts[topic.id] || 0);
+
+                // Scoring: weight by count, source diversity, and momentum
+                const score = (count * 2) + (sources * 3) + (delta * 5);
+
+                if (score >= 15) {
+                    const confidence = Math.min(95, Math.round(score * 1.5));
+                    let prediction = '';
+
+                    // Generate prediction based on topic
+                    if (topic.id === 'tariffs' && count >= 4) {
+                        prediction = 'Market volatility likely in next 24-48h';
+                    } else if (topic.id === 'fed-rates') {
+                        prediction = 'Expect increased financial sector coverage';
+                    } else if (topic.id.includes('china') || topic.id.includes('russia')) {
+                        prediction = 'Geopolitical escalation narrative forming';
+                    } else if (topic.id === 'layoffs') {
+                        prediction = 'Employment concerns may dominate news cycle';
+                    } else if (topic.category === 'Conflict') {
+                        prediction = 'Breaking developments likely within hours';
+                    } else {
+                        prediction = 'Topic gaining mainstream traction';
+                    }
+
+                    results.predictiveSignals.push({
+                        id: topic.id,
+                        name: topic.id.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                        category: topic.category,
+                        score,
+                        confidence,
+                        prediction,
+                        level: confidence >= 70 ? 'high' : confidence >= 50 ? 'medium' : 'low',
+                        headlines: topicHeadlines[topic.id] || []
+                    });
+                }
+            });
+
+            results.predictiveSignals.sort((a, b) => b.score - a.score);
+
+            return results;
+        }
+
+        // Render the Correlation Engine panel
+        function renderCorrelationEngine(correlations) {
+            if (!isPanelEnabled('correlation')) return;
+
+            const statusEl = document.getElementById('correlationStatus');
+
+            if (!correlations) {
+                statusEl.textContent = 'NO DATA';
+                return;
+            }
+
+            const totalSignals = correlations.emergingPatterns.length +
+                                correlations.momentumSignals.length +
+                                correlations.predictiveSignals.length;
+
+            statusEl.textContent = totalSignals > 0 ? `${totalSignals} SIGNALS` : 'MONITORING';
+
+            // Render Emerging Patterns
+            const emergingEl = document.getElementById('emergingPatterns');
+            if (correlations.emergingPatterns.length > 0) {
+                emergingEl.innerHTML = correlations.emergingPatterns.slice(0, 4).map(p => `
+                    <div class="correlation-item ${p.level}">
+                        <div class="correlation-item-header">
+                            <span class="correlation-topic">${p.name}</span>
+                            <span class="correlation-score ${p.level}">${p.count} mentions</span>
+                        </div>
+                        <div class="correlation-meta">${p.category} • ${p.sources.length} sources</div>
+                        <div class="correlation-sources">
+                            ${p.sources.slice(0, 4).map(s => `<span class="correlation-source-tag">${s}</span>`).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                emergingEl.innerHTML = '<div class="no-correlations">No emerging patterns detected</div>';
+            }
+
+            // Render Momentum Signals
+            const momentumEl = document.getElementById('momentumSignals');
+            if (correlations.momentumSignals.length > 0) {
+                momentumEl.innerHTML = correlations.momentumSignals.slice(0, 4).map(m => `
+                    <div class="correlation-item ${m.momentum === 'surging' ? 'high' : m.momentum === 'rising' ? 'elevated' : ''}">
+                        <div class="correlation-item-header">
+                            <span class="correlation-topic">${m.name}</span>
+                            <span class="momentum-indicator ${m.momentum}">
+                                ${m.momentum === 'surging' ? '🚀' : m.momentum === 'rising' ? '📈' : '➡️'}
+                                ${m.momentum.toUpperCase()}
+                            </span>
+                        </div>
+                        <div class="correlation-meta">${m.category} • ${m.current} now (+${m.delta} in 10m)</div>
+                        ${m.headlines.length > 0 ? `
+                            <div class="correlation-headlines">
+                                ${m.headlines.slice(0, 2).map(h => `
+                                    <div class="correlation-headline">
+                                        <a href="${h.link}" target="_blank">${h.title.substring(0, 60)}...</a>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `).join('');
+            } else {
+                momentumEl.innerHTML = '<div class="no-correlations">No momentum signals detected</div>';
+            }
+
+            // Render Cross-Source Correlations
+            const crossEl = document.getElementById('crossSourceCorrelations');
+            if (correlations.crossSourceCorrelations.length > 0) {
+                crossEl.innerHTML = correlations.crossSourceCorrelations.slice(0, 4).map(c => `
+                    <div class="correlation-item ${c.level}">
+                        <div class="correlation-item-header">
+                            <span class="correlation-topic">${c.name}</span>
+                            <span class="correlation-score ${c.level}">${c.sourceCount} sources</span>
+                        </div>
+                        <div class="correlation-meta">${c.category} • Multi-outlet coverage</div>
+                        <div class="correlation-sources">
+                            ${c.sources.slice(0, 5).map(s => `<span class="correlation-source-tag">${s}</span>`).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                crossEl.innerHTML = '<div class="no-correlations">No cross-source correlations</div>';
+            }
+
+            // Render Predictive Signals
+            const predictEl = document.getElementById('predictiveSignals');
+            if (correlations.predictiveSignals.length > 0) {
+                predictEl.innerHTML = correlations.predictiveSignals.slice(0, 4).map(p => `
+                    <div class="correlation-item ${p.level}">
+                        <div class="correlation-item-header">
+                            <span class="correlation-topic">${p.name}</span>
+                            <span class="correlation-score ${p.level}">${p.confidence}%</span>
+                        </div>
+                        <div class="correlation-meta">${p.prediction}</div>
+                        <div class="prediction-confidence">
+                            <div class="confidence-bar">
+                                <div class="confidence-fill ${p.level}" style="width: ${p.confidence}%"></div>
+                            </div>
+                            <span class="confidence-label">confidence</span>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                predictEl.innerHTML = '<div class="no-correlations">Gathering data for predictions...</div>';
+            }
+        }
+
+        // ==================== END CORRELATION ENGINE ====================
+
+        // ==================== NARRATIVE TRACKER ====================
+
+        // Fringe narrative patterns to track
+        const NARRATIVE_PATTERNS = [
+            // Conspiracy/Alternative theories
+            { id: 'deep-state', keywords: ['deep state', 'shadow government', 'permanent state'], category: 'Political', severity: 'watch' },
+            { id: 'cbdc-control', keywords: ['cbdc control', 'digital currency surveillance', 'social credit'], category: 'Finance', severity: 'watch' },
+            { id: 'wef-agenda', keywords: ['great reset', 'wef agenda', 'world economic forum plot'], category: 'Political', severity: 'watch' },
+            { id: 'bio-weapon', keywords: ['lab leak', 'bioweapon', 'gain of function'], category: 'Health', severity: 'emerging' },
+            { id: 'election-fraud', keywords: ['election fraud', 'rigged election', 'stolen election', 'mail ballot fraud'], category: 'Political', severity: 'watch' },
+
+            // Emerging tech narratives
+            { id: 'ai-doom', keywords: ['ai doom', 'ai extinction', 'superintelligence risk', 'agi danger'], category: 'Tech', severity: 'emerging' },
+            { id: 'ai-consciousness', keywords: ['ai sentient', 'ai conscious', 'ai feelings', 'ai alive'], category: 'Tech', severity: 'emerging' },
+            { id: 'robot-replacement', keywords: ['robots replacing', 'automation unemployment', 'job automation'], category: 'Economy', severity: 'spreading' },
+
+            // Geopolitical narratives
+            { id: 'china-invasion', keywords: ['china taiwan invasion', 'china war', 'south china sea conflict'], category: 'Geopolitical', severity: 'watch' },
+            { id: 'nato-expansion', keywords: ['nato provocation', 'nato aggression', 'nato encirclement'], category: 'Geopolitical', severity: 'watch' },
+            { id: 'dollar-collapse', keywords: ['dollar collapse', 'dedollarization', 'brics currency', 'petrodollar death'], category: 'Finance', severity: 'spreading' },
+
+            // Health narratives
+            { id: 'vaccine-injury', keywords: ['vaccine injury', 'vaccine side effect', 'vaccine death', 'turbo cancer'], category: 'Health', severity: 'watch' },
+            { id: 'next-pandemic', keywords: ['next pandemic', 'disease x', 'bird flu pandemic'], category: 'Health', severity: 'emerging' },
+
+            // Societal narratives
+            { id: 'depopulation', keywords: ['depopulation agenda', 'fertility crisis', 'population control'], category: 'Society', severity: 'disinfo' },
+            { id: 'food-crisis', keywords: ['food shortage', 'engineered famine', 'food supply attack'], category: 'Economy', severity: 'emerging' },
+            { id: 'energy-war', keywords: ['energy crisis manufactured', 'green agenda', 'energy shortage'], category: 'Economy', severity: 'spreading' }
+        ];
+
+        // Source classification
+        const SOURCE_TYPES = {
+            fringe: ['zerohedge', 'infowars', 'naturalnews', 'gateway', 'breitbart', 'epoch', 'revolver', 'dailycaller'],
+            alternative: ['substack', 'rumble', 'bitchute', 'telegram', 'gab', 'gettr', 'truth social'],
+            mainstream: ['reuters', 'ap news', 'bbc', 'cnn', 'nytimes', 'wsj', 'wapo', 'guardian', 'abc', 'nbc', 'cbs', 'fox']
+        };
+
+        // Track narratives history for crossover detection
+        let narrativeHistory = {};
+
+        function analyzeNarratives(allNews) {
+            if (!allNews || allNews.length === 0) return null;
+
+            const now = Date.now();
+            const results = {
+                emergingFringe: [],
+                fringeToMainstream: [],
+                narrativeWatch: [],
+                disinfoSignals: []
+            };
+
+            // Analyze each narrative pattern
+            NARRATIVE_PATTERNS.forEach(narrative => {
+                const matches = [];
+                const sourceMatches = { fringe: [], alternative: [], mainstream: [] };
+
+                allNews.forEach(item => {
+                    const title = (item.title || '').toLowerCase();
+                    const source = (item.source || '').toLowerCase();
+
+                    // Check if title matches narrative keywords
+                    const hasMatch = narrative.keywords.some(kw => title.includes(kw.toLowerCase()));
+                    if (hasMatch) {
+                        matches.push(item);
+
+                        // Classify source
+                        for (const [type, sources] of Object.entries(SOURCE_TYPES)) {
+                            if (sources.some(s => source.includes(s))) {
+                                sourceMatches[type].push(item);
+                                break;
+                            }
+                        }
+                    }
+                });
+
+                if (matches.length === 0) return;
+
+                // Track history for crossover detection
+                if (!narrativeHistory[narrative.id]) {
+                    narrativeHistory[narrative.id] = { firstSeen: now, sources: new Set() };
+                }
+                matches.forEach(m => narrativeHistory[narrative.id].sources.add(m.source));
+
+                const narrativeData = {
+                    id: narrative.id,
+                    name: narrative.id.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+                    category: narrative.category,
+                    severity: narrative.severity,
+                    count: matches.length,
+                    fringeCount: sourceMatches.fringe.length,
+                    mainstreamCount: sourceMatches.mainstream.length,
+                    sources: [...new Set(matches.map(m => m.source))].slice(0, 5),
+                    headlines: matches.slice(0, 3),
+                    keywords: narrative.keywords
+                };
+
+                // Categorize narrative
+                if (sourceMatches.mainstream.length > 0 && sourceMatches.fringe.length > 0) {
+                    // Crossover detected
+                    results.fringeToMainstream.push({
+                        ...narrativeData,
+                        status: 'crossing',
+                        crossoverLevel: sourceMatches.mainstream.length / matches.length
+                    });
+                } else if (narrative.severity === 'disinfo') {
+                    results.disinfoSignals.push(narrativeData);
+                } else if (sourceMatches.fringe.length > 0 || sourceMatches.alternative.length > 0) {
+                    results.emergingFringe.push(narrativeData);
+                } else {
+                    results.narrativeWatch.push(narrativeData);
+                }
+            });
+
+            // Sort each category by count
+            results.emergingFringe.sort((a, b) => b.count - a.count);
+            results.fringeToMainstream.sort((a, b) => b.crossoverLevel - a.crossoverLevel);
+            results.narrativeWatch.sort((a, b) => b.count - a.count);
+            results.disinfoSignals.sort((a, b) => b.count - a.count);
+
+            return results;
+        }
+
+        function renderNarrativeTracker(narratives) {
+            if (!isPanelEnabled('narrative')) return;
+
+            const statusEl = document.getElementById('narrativeStatus');
+            if (!narratives) {
+                if (statusEl) statusEl.textContent = 'NO DATA';
+                return;
+            }
+
+            const total = narratives.emergingFringe.length + narratives.fringeToMainstream.length +
+                         narratives.narrativeWatch.length + narratives.disinfoSignals.length;
+            if (statusEl) statusEl.textContent = `${total} ACTIVE`;
+
+            // Render Emerging Fringe
+            const fringeEl = document.getElementById('emergingFringe');
+            if (fringeEl) {
+                if (narratives.emergingFringe.length > 0) {
+                    fringeEl.innerHTML = narratives.emergingFringe.slice(0, 4).map(n => `
+                        <div class="narrative-item ${n.count >= 5 ? 'viral' : n.count >= 3 ? 'spreading' : 'emerging'}">
+                            <div class="narrative-header">
+                                <span class="narrative-title">${n.name}</span>
+                                <span class="narrative-badge ${n.count >= 5 ? 'viral' : n.count >= 3 ? 'spreading' : 'emerging'}">
+                                    ${n.count >= 5 ? 'VIRAL' : n.count >= 3 ? 'SPREADING' : 'EMERGING'}
+                                </span>
+                            </div>
+                            <div class="narrative-description">${n.category} • ${n.count} mentions</div>
+                            <div class="narrative-sources">
+                                ${n.sources.map(s => `<span class="narrative-source-tag">${s}</span>`).join('')}
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    fringeEl.innerHTML = '<div class="no-narratives">No fringe narratives detected</div>';
+                }
+            }
+
+            // Render Fringe to Mainstream
+            const crossEl = document.getElementById('fringeToMainstream');
+            if (crossEl) {
+                if (narratives.fringeToMainstream.length > 0) {
+                    crossEl.innerHTML = narratives.fringeToMainstream.slice(0, 4).map(n => `
+                        <div class="narrative-item spreading">
+                            <div class="narrative-header">
+                                <span class="narrative-title">${n.name}</span>
+                                <span class="narrative-badge spreading">CROSSING</span>
+                            </div>
+                            <div class="narrative-description">${n.category} • ${Math.round(n.crossoverLevel * 100)}% mainstream coverage</div>
+                            <div class="narrative-crossover">
+                                <span class="crossover-source fringe">Fringe (${n.fringeCount})</span>
+                                <span class="crossover-arrow">→</span>
+                                <span class="crossover-source mainstream">Mainstream (${n.mainstreamCount})</span>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    crossEl.innerHTML = '<div class="no-narratives">No crossover narratives detected</div>';
+                }
+            }
+
+            // Render Narrative Watch
+            const watchEl = document.getElementById('narrativeWatch');
+            if (watchEl) {
+                if (narratives.narrativeWatch.length > 0) {
+                    watchEl.innerHTML = narratives.narrativeWatch.slice(0, 4).map(n => `
+                        <div class="narrative-item watch">
+                            <div class="narrative-header">
+                                <span class="narrative-title">${n.name}</span>
+                                <span class="narrative-badge emerging">${n.count}</span>
+                            </div>
+                            <div class="narrative-description">${n.category}</div>
+                            <div class="narrative-metrics">
+                                <span class="narrative-metric">Sources: <span class="narrative-metric-value">${n.sources.length}</span></span>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    watchEl.innerHTML = '<div class="no-narratives">No narratives on watch</div>';
+                }
+            }
+
+            // Render Disinfo Signals
+            const disinfoEl = document.getElementById('disinfoSignals');
+            if (disinfoEl) {
+                if (narratives.disinfoSignals.length > 0) {
+                    disinfoEl.innerHTML = narratives.disinfoSignals.slice(0, 4).map(n => `
+                        <div class="narrative-item disinfo">
+                            <div class="narrative-header">
+                                <span class="narrative-title">${n.name}</span>
+                                <span class="narrative-badge disinfo">⚠ DISINFO</span>
+                            </div>
+                            <div class="narrative-description">${n.category} • Known disinformation pattern</div>
+                            <div class="narrative-metrics">
+                                <span class="narrative-metric">Mentions: <span class="narrative-metric-value">${n.count}</span></span>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    disinfoEl.innerHTML = '<div class="no-narratives">No disinfo signals detected</div>';
+                }
+            }
+        }
+
+        // ==================== END NARRATIVE TRACKER ====================
 
         // Calculate "Main Character" from news headlines
         function calculateMainCharacter(allNews) {
@@ -8827,6 +11309,16 @@
                 if (isPanelEnabled('mainchar')) {
                     const mainCharRankings = calculateMainCharacter(allNews);
                     renderMainCharacter(mainCharRankings);
+                }
+
+                if (isPanelEnabled('correlation')) {
+                    const correlations = analyzeCorrelations(allNews);
+                    renderCorrelationEngine(correlations);
+                }
+
+                if (isPanelEnabled('narrative')) {
+                    const narratives = analyzeNarratives(allNews);
+                    renderNarrativeTracker(narratives);
                 }
 
                 setStatus('Loading extras...', true);
