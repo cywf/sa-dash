@@ -34,9 +34,27 @@ export function getMapPan() { return mapPan; }
 // Load world map TopoJSON data
 export async function loadWorldMap() {
     if (worldMapData) return worldMapData;
+    
+    // Try local file first
+    try {
+        const response = await fetch('/assets/maps/countries-110m.json');
+        if (response.ok) {
+            worldMapData = await response.json();
+            // Check if it's a valid non-empty TopoJSON
+            if (worldMapData && worldMapData.objects && worldMapData.objects.countries) {
+                console.log('Loaded world map from local assets');
+                return worldMapData;
+            }
+        }
+    } catch (e) {
+        console.log('Local world map not available, trying CDN...');
+    }
+    
+    // Fallback to CDN
     try {
         const response = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
         worldMapData = await response.json();
+        console.log('Loaded world map from CDN');
         return worldMapData;
     } catch (e) {
         console.error('Failed to load world map:', e);
@@ -47,9 +65,27 @@ export async function loadWorldMap() {
 // Load US states TopoJSON data
 export async function loadUSStates() {
     if (usStatesData) return usStatesData;
+    
+    // Try local file first
+    try {
+        const response = await fetch('/assets/maps/states-10m.json');
+        if (response.ok) {
+            usStatesData = await response.json();
+            // Check if it's a valid non-empty TopoJSON
+            if (usStatesData && usStatesData.objects && usStatesData.objects.states) {
+                console.log('Loaded US states from local assets');
+                return usStatesData;
+            }
+        }
+    } catch (e) {
+        console.log('Local US states map not available, trying CDN...');
+    }
+    
+    // Fallback to CDN
     try {
         const response = await fetch('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json');
         usStatesData = await response.json();
+        console.log('Loaded US states from CDN');
         return usStatesData;
     } catch (e) {
         console.error('Failed to load US states:', e);
@@ -387,36 +423,39 @@ export async function renderGlobalMap(activityData, earthquakes = [], allNews = 
 
     // Load and render countries
     const world = await loadWorldMap();
-    if (world) {
-        const countries = topojson.feature(world, world.objects.countries);
+    if (!world || !world.objects || !world.objects.countries) {
+        throw new Error('Failed to load map data. Check network connection or try refreshing.');
+    }
+    
+    const countries = topojson.feature(world, world.objects.countries);
 
-        svg.append('g')
-            .attr('class', 'countries-layer')
-            .selectAll('path')
-            .data(countries.features)
-            .enter()
-            .append('path')
-            .attr('d', path)
-            .attr('fill', d => {
-                if (mapLayers.sanctions) {
-                    const countryId = d.id;
-                    const sanctionLevel = SANCTIONED_COUNTRIES[countryId];
-                    if (sanctionLevel === 'severe') return '#660000';
-                    if (sanctionLevel === 'high') return '#442200';
-                    if (sanctionLevel === 'moderate') return '#333300';
-                    if (sanctionLevel === 'low') return '#223322';
-                }
-                return '#0a2018';
-            })
-            .attr('stroke', '#0f5040')
-            .attr('stroke-width', 0.5);
+    svg.append('g')
+        .attr('class', 'countries-layer')
+        .selectAll('path')
+        .data(countries.features)
+        .enter()
+        .append('path')
+        .attr('d', path)
+        .attr('fill', d => {
+            if (mapLayers.sanctions) {
+                const countryId = d.id;
+                const sanctionLevel = SANCTIONED_COUNTRIES[countryId];
+                if (sanctionLevel === 'severe') return '#660000';
+                if (sanctionLevel === 'high') return '#442200';
+                if (sanctionLevel === 'moderate') return '#333300';
+                if (sanctionLevel === 'low') return '#223322';
+            }
+            return '#0a2018';
+        })
+        .attr('stroke', '#0f5040')
+        .attr('stroke-width', 0.5);
 
-        // Add US state boundaries (US view only)
-        if (isUSView) {
-            const usStates = await loadUSStates();
-            if (usStates) {
-                const states = topojson.feature(usStates, usStates.objects.states);
-                const stateBorders = topojson.mesh(usStates, usStates.objects.states, (a, b) => a !== b);
+    // Add US state boundaries (US view only)
+    if (isUSView) {
+        const usStates = await loadUSStates();
+        if (usStates && usStates.objects && usStates.objects.states) {
+            const states = topojson.feature(usStates, usStates.objects.states);
+            const stateBorders = topojson.mesh(usStates, usStates.objects.states, (a, b) => a !== b);
 
                 svg.append('g')
                     .attr('class', 'states-layer')
@@ -839,7 +878,19 @@ export async function renderGlobalMap(activityData, earthquakes = [], allNews = 
     } catch (error) {
         console.error('Map render error:', error);
         if (panel) {
-            panel.innerHTML = `<div class="loading-msg" style="color: #ff6b6b;">Map error: ${error.message}</div>`;
+            panel.innerHTML = `
+                <div class="error-msg" style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 1.2rem; color: #ff6b6b; margin-bottom: 1rem;">⚠️ Map Rendering Error</div>
+                    <div style="color: #ccc; margin-bottom: 0.5rem;">${escapeHtml(error.message)}</div>
+                    <div style="color: #888; font-size: 0.9rem; margin-top: 1rem;">
+                        Possible causes:<br>
+                        • Network connectivity issues<br>
+                        • Map data files not available<br>
+                        • Browser compatibility issue<br>
+                    </div>
+                    <button class="refresh-btn" onclick="refreshAll()" style="margin-top: 1rem;">Retry</button>
+                </div>
+            `;
         }
     }
 }

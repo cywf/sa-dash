@@ -1,0 +1,15 @@
+{
+  "type": "Topology",
+  "arcs": [],
+  "objects": {
+    "countries": {
+      "type": "GeometryCollection",
+      "geometries": []
+    }
+  },
+  "bbox": [-180, -90, 180, 90],
+  "transform": {
+    "scale": [0.036003600360036005, 0.01800180018001800],
+    "translate": [-180, -90]
+  }
+}
