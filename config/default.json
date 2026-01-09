@@ -1,0 +1,200 @@
+{
+  "$schema": "./schema.json",
+  "version": "2.0.0",
+  "mode": "static",
+  "theme": "private-security",
+  "dashboard": {
+    "title": "Situation Monitor",
+    "subtitle": "Executive Protection & Risk Intelligence Platform",
+    "classification": "OPEN SOURCE",
+    "refreshInterval": 300000,
+    "autoRefresh": true
+  },
+  "panels": {
+    "map": {
+      "enabled": true,
+      "name": "Global Activity Monitor",
+      "category": "situational",
+      "priority": 1,
+      "description": "Real-time global event tracking and geographic intelligence"
+    },
+    "travel-risk": {
+      "enabled": true,
+      "name": "Travel & Movement Risk",
+      "category": "executive-protection",
+      "priority": 1,
+      "description": "Travel advisories, transportation disruptions, and route safety"
+    },
+    "civil-unrest": {
+      "enabled": true,
+      "name": "Civil Unrest & Protests",
+      "category": "geopolitical",
+      "priority": 1,
+      "description": "Demonstrations, riots, and civil disorder monitoring"
+    },
+    "geopolitical": {
+      "enabled": true,
+      "name": "Geopolitical Intelligence",
+      "category": "geopolitical",
+      "priority": 1,
+      "description": "International relations, conflicts, and political developments"
+    },
+    "infrastructure": {
+      "enabled": true,
+      "name": "Infrastructure & Disruption",
+      "category": "critical-infrastructure",
+      "priority": 1,
+      "description": "Power, water, transport, and communications disruptions"
+    },
+    "cyber-threats": {
+      "enabled": true,
+      "name": "Cyber Threat Intelligence",
+      "category": "cyber",
+      "priority": 2,
+      "description": "Cyber attacks, breaches, and digital security threats"
+    },
+    "markets": {
+      "enabled": true,
+      "name": "Financial Markets",
+      "category": "financial",
+      "priority": 2,
+      "description": "Market indices and economic indicators"
+    },
+    "heatmap": {
+      "enabled": true,
+      "name": "Sector Performance",
+      "category": "financial",
+      "priority": 2,
+      "description": "Market sector performance visualization"
+    },
+    "watch-log": {
+      "enabled": true,
+      "name": "Watch Log",
+      "category": "operator",
+      "priority": 1,
+      "description": "Shift notes, handoffs, and operator observations"
+    },
+    "watchlist": {
+      "enabled": true,
+      "name": "Watchlist",
+      "category": "operator",
+      "priority": 1,
+      "description": "Tracked people, places, organizations, and topics"
+    },
+    "monitors": {
+      "enabled": true,
+      "name": "Custom Monitors",
+      "category": "operator",
+      "priority": 1,
+      "description": "User-defined keyword and location monitoring"
+    },
+    "intel-feed": {
+      "enabled": true,
+      "name": "Intelligence Feed",
+      "category": "intelligence",
+      "priority": 2,
+      "description": "Curated intelligence from think tanks and defense sources"
+    },
+    "correlation": {
+      "enabled": true,
+      "name": "Pattern Analysis",
+      "category": "analytics",
+      "priority": 2,
+      "description": "Cross-source pattern detection and momentum signals"
+    },
+    "commodities": {
+      "enabled": false,
+      "name": "Commodities / VIX",
+      "category": "financial",
+      "priority": 3,
+      "description": "Commodity prices and volatility index"
+    },
+    "polymarket": {
+      "enabled": false,
+      "name": "Prediction Markets",
+      "category": "financial",
+      "priority": 3,
+      "description": "Polymarket prediction market data"
+    }
+  },
+  "categories": {
+    "situational": {
+      "name": "Situational Awareness",
+      "icon": "🗺️",
+      "color": "#00ff88"
+    },
+    "executive-protection": {
+      "name": "Executive Protection",
+      "icon": "🛡️",
+      "color": "#00aaff"
+    },
+    "geopolitical": {
+      "name": "Geopolitical",
+      "icon": "🌍",
+      "color": "#ff8800"
+    },
+    "critical-infrastructure": {
+      "name": "Critical Infrastructure",
+      "icon": "⚡",
+      "color": "#ff4444"
+    },
+    "cyber": {
+      "name": "Cyber Security",
+      "icon": "🔒",
+      "color": "#aa00ff"
+    },
+    "financial": {
+      "name": "Financial",
+      "icon": "💹",
+      "color": "#00ff88"
+    },
+    "operator": {
+      "name": "Operator Tools",
+      "icon": "📋",
+      "color": "#00ddff"
+    },
+    "intelligence": {
+      "name": "Intelligence",
+      "icon": "🔍",
+      "color": "#ffaa00"
+    },
+    "analytics": {
+      "name": "Analytics",
+      "icon": "📊",
+      "color": "#ff00aa"
+    }
+  },
+  "sources": {
+    "rss": {
+      "enabled": true,
+      "timeout": 10000,
+      "cacheTTL": 60000
+    },
+    "apis": {
+      "enabled": true,
+      "timeout": 10000,
+      "cacheTTL": 300000
+    }
+  },
+  "security": {
+    "allowExternalImages": false,
+    "allowExternalScripts": false,
+    "maxCacheSize": 52428800,
+    "sanitizeHtml": true
+  },
+  "features": {
+    "watchLog": true,
+    "watchlist": true,
+    "pinning": true,
+    "triage": true,
+    "severityLevels": true,
+    "sourceConfidence": true,
+    "exportData": false,
+    "notifications": false
+  },
+  "operators": {
+    "currentShift": null,
+    "shiftDuration": 28800000,
+    "requireShiftNotes": false
+  }
+}
