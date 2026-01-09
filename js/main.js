@@ -9,7 +9,7 @@ import {
     fetchGovContracts, fetchAINews, fetchFedBalance, fetchPolymarket,
     fetchLayoffs, fetchSituationNews, fetchIntelFeed
 } from './data.js';
-import { renderGlobalMap, analyzeHotspotActivity } from './map.js';
+import { renderGlobalMap } from './map.js';
 import {
     isPanelEnabled, togglePanel, toggleSettings, applyPanelSettings,
     initPanels, resetPanelOrder
@@ -114,8 +114,7 @@ async function refreshAll() {
     // Render map
     if (isPanelEnabled('map')) {
         try {
-            const activityData = analyzeHotspotActivity(allNews);
-            await renderGlobalMap(activityData, earthquakes, allNews);
+            await renderGlobalMap();
         } catch (mapError) {
             console.error('Map render error:', mapError);
         }
