@@ -1,37 +1,20 @@
 // data.js - All data fetching functions
 
-import { CORS_PROXIES, ALERT_KEYWORDS, SECTORS, COMMODITIES, INTEL_SOURCES, AI_FEEDS } from './constants.js';
+import { ALERT_KEYWORDS, SECTORS, COMMODITIES, INTEL_SOURCES, AI_FEEDS } from './constants.js';
+import { fetchWithProxy, robustFetch, CACHE_TTL } from './net.js';
 
-// Fetch with proxy fallback
-export async function fetchWithProxy(url) {
-    for (let i = 0; i < CORS_PROXIES.length; i++) {
-        try {
-            const proxy = CORS_PROXIES[i];
-            const response = await fetch(proxy + encodeURIComponent(url), {
-                headers: { 'Accept': 'application/rss+xml, application/xml, text/xml, */*' }
-            });
-            if (response.ok) {
-                const text = await response.text();
-                // Check if response is valid (not an error page)
-                if (text && !text.includes('<!DOCTYPE html>') && !text.includes('error code:')) {
-                    return text;
-                }
-            }
-        } catch (e) {
-            console.log(`Proxy ${i} failed, trying next...`);
-        }
-    }
-    throw new Error('All proxies failed');
-}
+// Note: fetchWithProxy is now imported from net.js with improved reliability
 
 // Fetch RSS feed using rss2json API as primary method
 export async function fetchFeedViaJson(source) {
     try {
         const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(source.url)}`;
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error('rss2json API failed');
+        const data = await robustFetch(apiUrl, {
+            parser: 'json',
+            cacheTTL: CACHE_TTL.SHORT, // 1 minute cache for news
+            timeout: 8000
+        });
 
-        const data = await response.json();
         if (data.status !== 'ok' || !data.items) return [];
 
         return data.items.slice(0, 5).map(item => ({

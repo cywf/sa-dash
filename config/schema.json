@@ -1,0 +1,235 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/cywf/sa-dash/config/schema.json",
+  "title": "SA-DASH Configuration Schema",
+  "description": "Configuration schema for SA-DASH Situation Monitor",
+  "type": "object",
+  "required": ["version", "mode", "theme", "dashboard", "panels"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Configuration version",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "mode": {
+      "type": "string",
+      "description": "Deployment mode",
+      "enum": ["static", "docker", "server"],
+      "default": "static"
+    },
+    "theme": {
+      "type": "string",
+      "description": "Dashboard theme",
+      "enum": ["private-security", "public-osint", "corporate"],
+      "default": "private-security"
+    },
+    "dashboard": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Dashboard title"
+        },
+        "subtitle": {
+          "type": "string",
+          "description": "Dashboard subtitle"
+        },
+        "classification": {
+          "type": "string",
+          "description": "Classification level label"
+        },
+        "refreshInterval": {
+          "type": "integer",
+          "description": "Auto-refresh interval in milliseconds",
+          "minimum": 60000,
+          "default": 300000
+        },
+        "autoRefresh": {
+          "type": "boolean",
+          "description": "Enable automatic refresh",
+          "default": true
+        }
+      },
+      "required": ["title"]
+    },
+    "panels": {
+      "type": "object",
+      "description": "Panel configuration",
+      "patternProperties": {
+        "^[a-z-]+$": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Whether panel is enabled",
+              "default": true
+            },
+            "name": {
+              "type": "string",
+              "description": "Panel display name"
+            },
+            "category": {
+              "type": "string",
+              "description": "Panel category"
+            },
+            "priority": {
+              "type": "integer",
+              "description": "Panel priority (1=highest)",
+              "minimum": 1,
+              "maximum": 10
+            },
+            "description": {
+              "type": "string",
+              "description": "Panel description"
+            }
+          },
+          "required": ["enabled", "name", "category", "priority"]
+        }
+      }
+    },
+    "categories": {
+      "type": "object",
+      "description": "Panel categories",
+      "patternProperties": {
+        "^[a-z-]+$": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Category display name"
+            },
+            "icon": {
+              "type": "string",
+              "description": "Category icon (emoji or unicode)"
+            },
+            "color": {
+              "type": "string",
+              "description": "Category color (hex)",
+              "pattern": "^#[0-9a-fA-F]{6}$"
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "properties": {
+        "rss": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "timeout": {
+              "type": "integer",
+              "minimum": 1000
+            },
+            "cacheTTL": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "apis": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "timeout": {
+              "type": "integer",
+              "minimum": 1000
+            },
+            "cacheTTL": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "properties": {
+        "allowExternalImages": {
+          "type": "boolean",
+          "description": "Allow loading external images",
+          "default": false
+        },
+        "allowExternalScripts": {
+          "type": "boolean",
+          "description": "Allow loading external scripts",
+          "default": false
+        },
+        "maxCacheSize": {
+          "type": "integer",
+          "description": "Maximum cache size in bytes",
+          "minimum": 0,
+          "default": 52428800
+        },
+        "sanitizeHtml": {
+          "type": "boolean",
+          "description": "Sanitize all HTML content",
+          "default": true
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "description": "Feature flags",
+      "properties": {
+        "watchLog": {
+          "type": "boolean",
+          "description": "Enable watch log feature"
+        },
+        "watchlist": {
+          "type": "boolean",
+          "description": "Enable watchlist feature"
+        },
+        "pinning": {
+          "type": "boolean",
+          "description": "Enable item pinning"
+        },
+        "triage": {
+          "type": "boolean",
+          "description": "Enable triage tagging"
+        },
+        "severityLevels": {
+          "type": "boolean",
+          "description": "Enable severity level assignment"
+        },
+        "sourceConfidence": {
+          "type": "boolean",
+          "description": "Show source confidence ratings"
+        },
+        "exportData": {
+          "type": "boolean",
+          "description": "Enable data export"
+        },
+        "notifications": {
+          "type": "boolean",
+          "description": "Enable browser notifications"
+        }
+      }
+    },
+    "operators": {
+      "type": "object",
+      "description": "Operator settings",
+      "properties": {
+        "currentShift": {
+          "type": ["string", "null"],
+          "description": "Current shift identifier"
+        },
+        "shiftDuration": {
+          "type": "integer",
+          "description": "Shift duration in milliseconds",
+          "minimum": 0
+        },
+        "requireShiftNotes": {
+          "type": "boolean",
+          "description": "Require shift handoff notes"
+        }
+      }
+    }
+  }
+}
