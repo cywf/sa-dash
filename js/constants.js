@@ -20,6 +20,7 @@ export const PANELS = {
     layoffs: { name: 'Layoffs Tracker', priority: 3 },
     venezuela: { name: 'Venezuela Situation', priority: 2 },
     greenland: { name: 'Greenland Situation', priority: 2 },
+    iran: { name: 'Iran Situation', priority: 2 },
     intel: { name: 'Intel Feed', priority: 2 },
     correlation: { name: 'Correlation Engine', priority: 1 },
     narrative: { name: 'Narrative Tracker', priority: 1 }
@@ -1140,7 +1141,7 @@ export const PRESETS = {
         name: 'Geopolitics Watcher',
         icon: '🌍',
         description: 'Global situation awareness and regional hotspots',
-        panels: ['map', 'intel', 'politics', 'gov', 'venezuela', 'greenland', 'correlation', 'narrative']
+        panels: ['map', 'intel', 'politics', 'gov', 'venezuela', 'greenland', 'iran', 'correlation', 'narrative']
     },
     'intel': {
         id: 'intel',
@@ -1160,13 +1161,13 @@ export const PRESETS = {
         id: 'everything',
         name: 'Everything',
         icon: '🎛️',
-        description: 'Kitchen sink - all 21 panels enabled',
+        description: 'Kitchen sink - all panels enabled',
         panels: Object.keys({
             map: true, politics: true, tech: true, finance: true, gov: true,
             heatmap: true, markets: true, monitors: true, commodities: true,
             polymarket: true, whales: true, mainchar: true, printer: true,
             contracts: true, ai: true, layoffs: true, venezuela: true,
-            greenland: true, intel: true, correlation: true, narrative: true
+            greenland: true, iran: true, intel: true, correlation: true, narrative: true
         })
     }
 };

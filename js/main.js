@@ -191,7 +191,7 @@ async function refreshAll() {
     setStatus('Loading extras...', true);
 
     // STAGE 3: Extra data - lowest priority
-    let whales = [], contracts = [], aiNews = [], layoffs = [], venezuelaNews = [], greenlandNews = [], intelFeed = [];
+    let whales = [], contracts = [], aiNews = [], layoffs = [], venezuelaNews = [], greenlandNews = [], iranNews = [], intelFeed = [];
     try {
         const stage3Promise = Promise.allSettled([
             isPanelEnabled('whales') ? fetchWhaleTransactions() : Promise.resolve([]),
@@ -200,6 +200,7 @@ async function refreshAll() {
             isPanelEnabled('layoffs') ? fetchLayoffs() : Promise.resolve([]),
             isPanelEnabled('venezuela') ? fetchSituationNews('venezuela maduro caracas crisis') : Promise.resolve([]),
             isPanelEnabled('greenland') ? fetchSituationNews('greenland denmark trump arctic') : Promise.resolve([]),
+            isPanelEnabled('iran') ? fetchSituationNews('iran tehran nuclear irgc sanctions') : Promise.resolve([]),
             isPanelEnabled('intel') ? fetchIntelFeed() : Promise.resolve([])
         ]);
 
@@ -210,7 +211,8 @@ async function refreshAll() {
         layoffs = results[3].status === 'fulfilled' ? results[3].value : [];
         venezuelaNews = results[4].status === 'fulfilled' ? results[4].value : [];
         greenlandNews = results[5].status === 'fulfilled' ? results[5].value : [];
-        intelFeed = results[6].status === 'fulfilled' ? results[6].value : [];
+        iranNews = results[6].status === 'fulfilled' ? results[6].value : [];
+        intelFeed = results[7].status === 'fulfilled' ? results[7].value : [];
     } catch (e) {
         console.error('Stage 3 error:', e);
     }
@@ -232,6 +234,13 @@ async function refreshAll() {
             title: 'Greenland Dispute',
             subtitle: 'US-Denmark tensions over Arctic territory',
             criticalKeywords: ['purchase', 'trump', 'military', 'takeover', 'independence', 'referendum']
+        });
+    }
+    if (isPanelEnabled('iran')) {
+        renderSituation('iranPanel', 'iranStatus', iranNews, {
+            title: 'Iran Situation',
+            subtitle: 'Nuclear program, regional tensions & sanctions',
+            criticalKeywords: ['nuclear', 'strike', 'attack', 'irgc', 'enrichment', 'missile', 'sanctions', 'proxy']
         });
     }
 
