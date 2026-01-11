@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
-	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 	import { Panel } from '$lib/components/common';
 	import {
 		HOTSPOTS,
@@ -92,20 +91,10 @@
 		}
 	}
 
-	// Mobile detection
-	function isMobile(): boolean {
-		return window.innerWidth <= 768;
-	}
-
-	// Update zoom behavior based on viewport
-	function updateZoomBehavior(): void {
-		if (!svg || !zoom || !mapGroup) return;
-		if (isMobile()) {
-			svg.call(zoom);
-		} else {
-			svg.on('.zoom', null);
-			mapGroup.attr('transform', null);
-		}
+	// Enable zoom/pan behavior on the map
+	function enableZoom(): void {
+		if (!svg || !zoom) return;
+		svg.call(zoom);
 	}
 
 	// Calculate day/night terminator points
@@ -211,7 +200,7 @@
 				mapGroup.attr('transform', event.transform.toString());
 			});
 
-		updateZoomBehavior();
+		enableZoom();
 
 		// Setup projection
 		projection = d3
@@ -550,13 +539,6 @@
 
 	onMount(() => {
 		initMap();
-		window.addEventListener('resize', updateZoomBehavior);
-	});
-
-	onDestroy(() => {
-		if (browser) {
-			window.removeEventListener('resize', updateZoomBehavior);
-		}
 	});
 </script>
 
