@@ -38,9 +38,15 @@ export const GET: RequestHandler = async ({ url }) => {
 
 	const ip = url.searchParams.get('ip')!;
 
-	// Validate IP format
-	const ipRegex = /^(\d{1,3}\.){3}\d{1,3}$/;
-	if (!ipRegex.test(ip)) {
+	// Validate IP format (check each octet is 0-255)
+	const ipParts = ip.split('.');
+	if (
+		ipParts.length !== 4 ||
+		ipParts.some((part) => {
+			const num = parseInt(part, 10);
+			return isNaN(num) || num < 0 || num > 255;
+		})
+	) {
 		return json(
 			{
 				error: 'Invalid IP address format'

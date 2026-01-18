@@ -45,9 +45,14 @@ export async function getMicrophoneSpectrum(
 			source: 'microphone'
 		};
 
-		// Clean up
-		stream.getTracks().forEach((track) => track.stop());
-		audioContext.close();
+		// Clean up resources
+		try {
+			stream.getTracks().forEach((track) => track.stop());
+			await audioContext.close();
+		} catch (error) {
+			// Continue even if cleanup fails
+			console.warn('Cleanup error:', error);
+		}
 
 		return { frame };
 	} catch (error) {

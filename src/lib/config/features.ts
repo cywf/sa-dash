@@ -8,8 +8,7 @@ import { env } from '$env/dynamic/public';
 /**
  * Master flag for all Intel Sources features
  */
-export const FEATURE_INTEL_SOURCES =
-	env.PUBLIC_FEATURE_INTEL_SOURCES === 'true' || import.meta.env.DEV;
+export const FEATURE_INTEL_SOURCES = env.PUBLIC_FEATURE_INTEL_SOURCES === 'true';
 
 /**
  * Individual panel feature flags
