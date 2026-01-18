@@ -51,14 +51,12 @@ export const GET: RequestHandler = async () => {
 	try {
 		// Fetch multiple data sources in parallel
 		const [solarFluxResult, geomagResult, sunspotResult] = await Promise.all([
-			fetchWithTimeout<SolarFluxData[]>(
-				`${SWPC_BASE_URL}/json/f107_cm_flux.json`,
-				{ timeout: 10000 }
-			),
-			fetchWithTimeout<GeomagneticData[]>(
-				`${SWPC_BASE_URL}/json/planetary_k_index_1m.json`,
-				{ timeout: 10000 }
-			),
+			fetchWithTimeout<SolarFluxData[]>(`${SWPC_BASE_URL}/json/f107_cm_flux.json`, {
+				timeout: 10000
+			}),
+			fetchWithTimeout<GeomagneticData[]>(`${SWPC_BASE_URL}/json/planetary_k_index_1m.json`, {
+				timeout: 10000
+			}),
 			fetchWithTimeout<Array<[string, number]>>(
 				`${SWPC_BASE_URL}/json/solar-cycle/observed-solar-cycle-indices.json`,
 				{ timeout: 10000 }

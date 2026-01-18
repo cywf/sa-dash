@@ -32,7 +32,15 @@ export type PanelId =
 	| 'intel'
 	| 'correlation'
 	| 'narrative'
-	| 'fed';
+	| 'fed'
+	| 'adsb'
+	| 'satellites'
+	| 'spectrum'
+	| 'shodan'
+	| 'wigle'
+	| 'seismic'
+	| 'rf-propagation'
+	| 'aurora';
 
 export const PANELS: Record<PanelId, PanelConfig> = {
 	map: { name: 'Global Map', priority: 1 },
@@ -59,7 +67,15 @@ export const PANELS: Record<PanelId, PanelConfig> = {
 	intel: { name: 'Intel Feed', priority: 2 },
 	correlation: { name: 'Correlation Engine', priority: 1 },
 	narrative: { name: 'Narrative Tracker', priority: 1 },
-	fed: { name: 'Federal Reserve', priority: 1 }
+	fed: { name: 'Federal Reserve', priority: 1 },
+	adsb: { name: 'ADS-B Aircraft', priority: 3 },
+	satellites: { name: 'Satellites', priority: 3 },
+	spectrum: { name: 'Spectrum Analyzer', priority: 3 },
+	shodan: { name: 'Shodan', priority: 3 },
+	wigle: { name: 'WiGLE WiFi', priority: 3 },
+	seismic: { name: 'Seismic Activity', priority: 3 },
+	'rf-propagation': { name: 'HF Propagation', priority: 3 },
+	aurora: { name: 'Aurora Activity', priority: 3 }
 };
 
 export const NON_DRAGGABLE_PANELS: PanelId[] = ['map'];

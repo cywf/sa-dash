@@ -26,7 +26,9 @@ export async function shodanHostLookup(ip: string): Promise<ShodanHostResponse> 
 	const response = await fetch(url);
 
 	if (!response.ok) {
-		const error = await response.json().catch(() => ({ error: 'Failed to fetch Shodan host data' }));
+		const error = await response
+			.json()
+			.catch(() => ({ error: 'Failed to fetch Shodan host data' }));
 		return {
 			timestamp: Date.now(),
 			error: error.error || `HTTP ${response.status}`
