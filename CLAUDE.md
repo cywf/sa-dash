@@ -98,7 +98,7 @@ Unique business logic for intelligence analysis:
 
 ## Deployment
 
-GitHub Actions workflow builds with `BASE_PATH=/situation-monitor` and deploys to GitHub Pages at `https://hipcityreg.github.io/situation-monitor/`
+GitHub Actions workflow builds with `BASE_PATH=/sa-dash` and deploys to GitHub Pages at `https://cywf.github.io/sa-dash/`
 
 ## External Dependencies
 
